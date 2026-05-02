@@ -699,7 +699,7 @@ var discRespMap = {
 // Mapa responsável → lista de disciplinas (para filtros da aba Ações).
 // 100% derivado do DISCIPLINASxRESPONSAVEL com matcher normalizado + fuzzy +
 // split por '/'. NÃO EDITAR — ver gerarRespToDiscFilterJS_ no GAS.
-// Responsáveis não resolvidos estão em window._epb2Report.resps_nao_resolvidos.
+// Responsáveis não resolvidos estão em window._vrsReport.resps_nao_resolvidos.
 var respToDiscFilter = {
   "AMPLIE ENGENHARIA": ["HIDRÁULICO E SANITÁRIO","PREVENTIVO","ELÉTRICO E TELECOMUNICAÇÕES","SPDA","CLIMATIZAÇÃO E EXAUSTÃO"],
   "BORNSALES ENGENHARIA": ["FUNDAÇÕES E CONTENÇÕES"],
@@ -786,7 +786,7 @@ const disciplinas = [
 // ─────────────────────────────────────────────────────────────────────────────
 
 var acoesSemanal = [
-  // ── Controle de Ações (EPB2CONTROLE_ACOES — 02/05/2026) ──────────────────────
+  // ── Controle de Ações (VRSCONTROLE_ACOES — 02/05/2026) ──────────────────────
   // Não mesclar com acoesCROR aqui — a junção é feita em var acoes abaixo.
   { prazo:"15/04/26", item:"Tue Apr 14 2026 04:00:00 GMT-0300 (Horário Padrão de Brasília)", desc:"CK", resp:"Cronograma", criticidade:"Em Andamento", status:"Com atraso", conclusao:"-", diasRest:"-17", obs:"Crítico", inicio:"Definição do cronograma geral e demais organizações", disc:"" },
   { prazo:"15/04/26", item:"Tue Apr 14 2026 04:00:00 GMT-0300 (Horário Padrão de Brasília)", desc:"CK", resp:"Briefing Arquitetura", criticidade:"Concluído", status:"Com atraso", conclusao:"-", diasRest:"-17", obs:"Alto", inicio:"Preenchimento e envio do briefing a MANNZ, para start da transcrição arquitetura executiva", disc:"" },
