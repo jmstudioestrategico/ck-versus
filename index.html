@@ -838,7 +838,7 @@ var acoesCROR = [
   { prazo:"14/09/26", item:"PIS: PE-C1 - PRANCHAS E MODELOS (EMBASAMENTO) - ENTREGÁVEIS ETAPA + ATENDIMENTO CFLOW", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Baixa", status:"Nao iniciado", conclusao:"-", diasRest:"--", obs:"", inicio:"27/08/26", disc:"PISCINA", entregavel:false },
   { prazo:"14/09/26", item:"PAS: PE-C1: EMISSÃO INICIAL FURAÇÃO TODAS AS DISCIPLINAS (EMBASAMENTO)", desc:"", resp:"", criticidade:"Baixa", status:"Nao iniciado", conclusao:"-", diasRest:"--", obs:"", inicio:"27/08/26", disc:"FURAÇÕES", entregavel:false },
   { prazo:"16/09/26", item:"RELATÓRIO/REUNIÃO - EFEITO PISTÃO, CASA DE MAQUINAS, POÇO (TODO EDIFÍCIO)", desc:"", resp:"", criticidade:"Baixa", status:"Nao iniciado", conclusao:"-", diasRest:"--", obs:"", inicio:"27/08/26", disc:"CONSULTORIA ELEVADORES", entregavel:false },
-  { prazo:"16/09/26", item:"RELATÓRIO/REUNIÃO (TODO EDIFÍCIO)", desc:"", resp:"", criticidade:"Baixa", status:"Nao iniciado", conclusao:"-", diasRest:"--", obs:"", inicio:"27/08/26", disc:"CONSULTORIA CHURRASQUEIRA", entregavel:false },
+  { prazo:"16/09/26", item:"RELATÓRIO/REUNIÃO - CHURRASQUEIRAS (TODO EDIFÍCIO)", desc:"", resp:"", criticidade:"Baixa", status:"Nao iniciado", conclusao:"-", diasRest:"--", obs:"", inicio:"27/08/26", disc:"CONSULTORIA CHURRASQUEIRA", entregavel:false },
   { prazo:"16/09/26", item:"ESQ: PE-C1: RELATÓRIO E PRÉ DETALHAMENTO (TODO EDIFÍCIO)", desc:"", resp:"ALUM PROJETOS", criticidade:"Baixa", status:"Nao iniciado", conclusao:"-", diasRest:"--", obs:"", inicio:"27/08/26", disc:"ESQUADRIAS", entregavel:false },
   { prazo:"10/09/26", item:"INT: PE-C1 - PRANCHAS E MODELO (EMBASAMENTO)", desc:"", resp:"OSVALDO SEGUNDO", criticidade:"Baixa", status:"Nao iniciado", conclusao:"-", diasRest:"--", obs:"", inicio:"27/08/26", disc:"INTERIORES", entregavel:false },
   { prazo:"17/09/26", item:"CK: ANÁLISE INTERIORES CK (EMBASAMENTO)", desc:"", resp:"CK", criticidade:"Baixa", status:"Nao iniciado", conclusao:"-", diasRest:"--", obs:"", inicio:"11/09/26", disc:"CONSTRUTORA", entregavel:false },
@@ -966,9 +966,9 @@ const reunioes = [
   // ── Previstas ───────────────────────────────────────────────────────────────────
   { data:"26/08/26", dataISO:"2026-08-26", tipo:"Compatibilização", situacao:"prevista",  assunto:"REUNIÃO MULTIDISCIPLINAR PARA INÍCIO DA ETAPA PRÉ-EXECUTIVO", decisoes:"" },
   { data:"27/08/26", dataISO:"2026-08-27", tipo:"Reunião", situacao:"prevista",  assunto:"RELATÓRIO/REUNIÃO - EFEITO PISTÃO, CASA DE MAQUINAS, POÇO (TODO EDIFÍCIO)", decisoes:"" },
-  { data:"27/08/26", dataISO:"2026-08-27", tipo:"Reunião", situacao:"prevista",  assunto:"RELATÓRIO/REUNIÃO (TODO EDIFÍCIO)", decisoes:"" },
+  { data:"27/08/26", dataISO:"2026-08-27", tipo:"Reunião", situacao:"prevista",  assunto:"RELATÓRIO/REUNIÃO - CHURRASQUEIRAS (TODO EDIFÍCIO)", decisoes:"" },
   { data:"15/10/26", dataISO:"2026-10-15", tipo:"Compatibilização", situacao:"prevista",  assunto:"REUNIÃO MULTIDISCIPLINAR PARA INÍCIO DA ETAPA EX", decisoes:"" },
-  { data:"01/03/27", dataISO:"2027-03-01", tipo:"Compatibilização", situacao:"prevista",  assunto:"REUNIÃO MULTIDISCIPLINAR", decisoes:"" },
+  { data:"01/03/27", dataISO:"2027-03-01", tipo:"Compatibilização", situacao:"prevista",  assunto:"REUNIÃO MULTIDISCIPLINAR FECHAMENTO", decisoes:"" },
 ];
 
 // ── UTILS ─────────────────────────────────────────────────────────────────────
@@ -981,7 +981,7 @@ const projEnd   = new Date(Math.max.apply(null,_etDates));
 // AUTOMAÇÃO: substituir APENAS o valor da string abaixo (formato YYYY-MM-DD)
 // com a data de atualização dos dados do CROR (campo max "Criado" do xlsx).
 // NÃO usar new Date() sem argumento — isso pega a data de hoje, não do CROR.
-const _CROR_DATA_REF = "2026-05-29"; // ← GAS: max campo Criado do CROR
+const _CROR_DATA_REF = "2026-06-01"; // ← GAS: max campo Criado do CROR
 const _EXEC_DATA = "2026-06-01"; // ← GAS: data da última execução do script
 // Deriva o objeto Date a partir da string — sem timezone issues:
 const dataReferencia = (function(s) {
@@ -3404,7 +3404,7 @@ function drawTrendChart() {
   //   Realizado = % atual de cada fase * peso (horas) / total
   //   Planejado = progresso linear planejado por fase acumulado
   //   Projeção  = curva planejada reescalada a partir do ponto atual
-  var realData = [2.9, 2.9, 2.9, 3.0, 0, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null];
+  var realData = [2.9, 2.9, 2.9, 3.0, 0, 0, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null];
   // Linha planejada (cronograma original — estimativa)
   var planejado = [1.1, 2.0, 3.5, 5.8, 8.2, 10.6, 13.0, 15.3, 17.7, 20.0, 22.2, 23.7, 25.6, 27.7, 30.4, 33.1, 35.8, 38.4, 41.1, 43.8, 46.5, 48.9, 51.6, 54.3, 56.9, 59.4, 61.5, 63.0, 64.6, 68.5, 72.0, 74.9, 77.7, 80.5, 83.3, 86.0, 88.8, 91.6, 94.5, 97.2, 98.9, 100.0];
   var projecao = [null, null, null, 3.0, 5.6, 8.1, 10.7, 13.2, 15.8, 18.3, 20.9, 23.4, 26.0, 28.5, 31.1, 33.6, 36.2, 38.7, 41.3, 43.8, 46.4, 48.9, 51.5, 54.1, 56.6, 59.2, 61.7, 64.3, 66.8, 69.4, 71.9, 74.5, 77.0, 79.6, 82.1, 84.7, 87.2, 89.8, 92.3, 94.9, 97.4, 100.0];
@@ -3668,13 +3668,6 @@ document.getElementById('ent-list') && renderEntregaveis();
 // Disciplinas com pelo menos um entregável no AXIA601-DOC-ENTREGAVEIS.
 // Derivado automaticamente de ent.totais pelo GAS — NÃO EDITAR.
 var discHasEntregaveis = {
-  "ARQ": true,
-  "CLI": true,
-  "ELE": true,
-  "EST": true,
-  "FUN": true,
-  "HID": true,
-  "PCI": true,
 };
 // DISCHASENTREGAVEIS_END
 
