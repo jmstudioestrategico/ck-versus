@@ -741,24 +741,35 @@ const etapas = [
 
 // CICLOS_START
 const ciclos = [
-  { id:"C1", etapa:"AP", label:"Ciclo 01", sub:"", inicio:"16/07/26", fim:"12/03/27", progresso:0 },
-  { id:"C2", etapa:"AP", label:"Ciclo 02", sub:"", inicio:"15/03/27", fim:"26/08/27", progresso:0 },
-  { id:"C3", etapa:"AP", label:"Ciclo 03", sub:"", inicio:"28/07/27", fim:"15/03/28", progresso:0 },
-  { id:"C1", etapa:"PE", label:"Ciclo 01", sub:"Grupo De Tarefas + Grupo De Tarefas + Grupo De Tarefas", inicio:"29/11/27", fim:"22/08/28", progresso:0 },
-  { id:"C2", etapa:"PE", label:"Ciclo 02", sub:"Grupo De Tarefas + Grupo De Tarefas + Grupo De Tarefas", inicio:"25/04/28", fim:"28/11/28", progresso:0 },
+  { id:"C1", etapa:"AP", label:"Ciclo 01", sub:"Arquitetura Mannz", inicio:"15/05/26", fim:"29/06/26", progresso:3 },
+  { id:"C2", etapa:"AP", label:"Ciclo 02", sub:"Anteprojeto 02", inicio:"30/06/26", fim:"25/08/26", progresso:0 },
+  { id:"C1", etapa:"PE", label:"Ciclo 01", sub:"Embasamento", inicio:"27/08/26", fim:"21/10/26", progresso:0 },
+  { id:"C2", etapa:"PE", label:"Ciclo 02", sub:"Torre", inicio:"09/09/26", fim:"30/11/26", progresso:0 },
+  { id:"C1", etapa:"EX", label:"Ciclo 01", sub:"Embasamento", inicio:"15/10/26", fim:"15/12/26", progresso:0 },
+  { id:"C2", etapa:"EX", label:"Ciclo 02", sub:"Torre", inicio:"16/11/26", fim:"27/01/27", progresso:0 },
+  { id:"C3", etapa:"EX", label:"Ciclo 03", sub:"Fechamento", inicio:"21/01/27", fim:"01/03/27", progresso:0 },
 ];
 // Alias de retrocompatibilidade — remover quando nada mais referenciar ciclosAP
 const ciclosAP = ciclos.filter(function(c){return c.etapa==="AP";});
 // CICLOS_END
 
-// Decisão Julliet/MANNZ (24/04/2026): os ciclos do PE só aparecem no
-// dashboard quando a etapa PE tiver iniciado no CROR (progresso > 0).
-// Enquanto PE não inicia, mostra-se apenas os ciclos do AP.
+// Decisão Julliet/MANNZ (24/04/2026, generalizada em 01/06/2026):
+// os ciclos de uma fase aparecem quando aquela fase inicia (progresso > 0).
+// A PRIMEIRA fase que tem ciclos (na ordem das etapas EP→AP→PE→EX→LO) é a
+// "âncora": fica sempre visível, mesmo antes de iniciar, pra mostrar o plano
+// da fase corrente. As demais (PE, EX, LO...) só aparecem depois que iniciam.
+// Antes, a regra só conhecia AP e PE — ciclos de EX ficavam invisíveis pra
+// sempre. Agora vale pra qualquer fase.
 function ciclosVisiveis() {
-  var etapaPE = etapas.find(function(e) { return e.id === 'PE'; });
-  var peIniciada = !!(etapaPE && etapaPE.progresso > 0);
+  // Âncora = primeira fase (na ordem das etapas) que possui algum ciclo
+  var ancora = null;
+  for (var i = 0; i < etapas.length; i++) {
+    if (ciclos.some(function(c){ return c.etapa === etapas[i].id; })) { ancora = etapas[i].id; break; }
+  }
   return ciclos.filter(function(c) {
-    return c.etapa === 'AP' || (c.etapa === 'PE' && peIniciada);
+    if (c.etapa === ancora) return true;                 // âncora: sempre visível
+    var ef = etapas.find(function(e){ return e.id === c.etapa; });
+    return !!(ef && ef.progresso > 0);                   // demais: só quando a fase inicia
   });
 }
 function corDaEtapa(id) {
@@ -1263,16 +1274,17 @@ var _eb = document.getElementById('etapas-bars'); if (_eb) _eb.innerHTML = etapa
 }).join('');
 
 // ── CICLOS ────────────────────────────────────────────────────────────────────
-// Título dinâmico — muda de "Ciclos — Anteprojeto (AP)" para
-// "Ciclos — Anteprojeto (AP) + Pré-Executivo (PE)" quando a etapa PE
-// inicia (ver regra em ciclosVisiveis()). Afeta só elementos com classe
-// .ciclos-title, não todos os .card-title da página.
+// Título dinâmico — lista as fases que têm ciclo visível no momento, pelo
+// rótulo da etapa, na ordem EP→AP→PE→EX→LO. Ex: "Ciclos — Anteprojeto (AP)"
+// ou "Ciclos — Anteprojeto (AP) + Pré-Executivo (PE)" conforme a regra em
+// ciclosVisiveis(). Afeta só elementos com classe .ciclos-title.
 (function() {
   var cv = ciclosVisiveis();
-  var temPE = cv.some(function(c){ return c.etapa === 'PE'; });
-  var titulo = temPE
-    ? 'Ciclos — Anteprojeto (AP) + Pré-Executivo (PE)'
-    : 'Ciclos — Anteprojeto (AP)';
+  // Fases distintas visíveis, na ordem das etapas, pelo rótulo
+  var fasesVis = etapas.filter(function(e){
+    return cv.some(function(c){ return c.etapa === e.id; });
+  }).map(function(e){ return e.label; });
+  var titulo = fasesVis.length ? 'Ciclos — ' + fasesVis.join(' + ') : 'Ciclos';
   document.querySelectorAll('.ciclos-title').forEach(function(el) {
     el.textContent = titulo;
   });
@@ -3390,24 +3402,24 @@ function drawTrendChart() {
 
   // Todos os meses do projeto: Jan/2026 → Jun/2029 = 42 meses
   var meses = [
-    'Jan/26','Fev/26','Mar/26','Abr/26','Mai/26','Jun/26','Jul/26','Ago/26','Set/26','Out/26','Nov/26','Dez/26','Jan/27','Fev/27','Mar/27','Abr/27','Mai/27','Jun/27','Jul/27','Ago/27','Set/27','Out/27','Nov/27','Dez/27','Jan/28','Fev/28','Mar/28','Abr/28','Mai/28','Jun/28','Jul/28','Ago/28','Set/28','Out/28','Nov/28','Dez/28','Jan/29','Fev/29','Mar/29','Abr/29','Mai/29','Jun/29'
+    'Mai/26','Jun/26','Jul/26','Ago/26','Set/26','Out/26','Nov/26','Dez/26','Jan/27','Fev/27','Mar/27'
   ];
   var n = meses.length; // 42
   var DPR = window.devicePixelRatio || 1;
   // Hoje = calculado dinamicamente a partir de _CROR_DATA_REF
   var _hp = (typeof _CROR_DATA_REF !== 'undefined' ? _CROR_DATA_REF : '2026-04-01').split('-');
   var _daysInMonth = new Date(parseInt(_hp[0]), parseInt(_hp[1]), 0).getDate();
-  var HOJE_IDX = (parseInt(_hp[0]) - 2026) * 12 + (parseInt(_hp[1]) - 1) + (parseInt(_hp[2]) - 1) / _daysInMonth;
+  var HOJE_IDX = (parseInt(_hp[0]) - 2026) * 12 + (parseInt(_hp[1]) - 5) + (parseInt(_hp[2]) - 1) / _daysInMonth;
   HOJE_IDX = Math.max(0, Math.min(HOJE_IDX, n - 1));
 
   // Curvas calculadas automaticamente a partir das fases do Project
   //   Realizado = % atual de cada fase * peso (horas) / total
   //   Planejado = progresso linear planejado por fase acumulado
   //   Projeção  = curva planejada reescalada a partir do ponto atual
-  var realData = [2.9, 2.9, 2.9, 3.0, 0, 0, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null];
+  var realData = [0, 0, null, null, null, null, null, null, null, null, null];
   // Linha planejada (cronograma original — estimativa)
-  var planejado = [1.1, 2.0, 3.5, 5.8, 8.2, 10.6, 13.0, 15.3, 17.7, 20.0, 22.2, 23.7, 25.6, 27.7, 30.4, 33.1, 35.8, 38.4, 41.1, 43.8, 46.5, 48.9, 51.6, 54.3, 56.9, 59.4, 61.5, 63.0, 64.6, 68.5, 72.0, 74.9, 77.7, 80.5, 83.3, 86.0, 88.8, 91.6, 94.5, 97.2, 98.9, 100.0];
-  var projecao = [null, null, null, 3.0, 5.6, 8.1, 10.7, 13.2, 15.8, 18.3, 20.9, 23.4, 26.0, 28.5, 31.1, 33.6, 36.2, 38.7, 41.3, 43.8, 46.4, 48.9, 51.5, 54.1, 56.6, 59.2, 61.7, 64.3, 66.8, 69.4, 71.9, 74.5, 77.0, 79.6, 82.1, 84.7, 87.2, 89.8, 92.3, 94.9, 97.4, 100.0];
+  var planejado = [7.1, 14.3, 21.4, 35.7, 42.9, 57.1, 71.4, 78.6, 85.7, 92.9, 100];
+  var projecao = [null, 0, 11.1, 22.2, 33.3, 44.4, 55.6, 66.7, 77.8, 88.9, 100];
   var W = (canvas.parentElement && canvas.parentElement.clientWidth > 50) ? canvas.parentElement.clientWidth : (canvas.parentElement && canvas.parentElement.offsetWidth > 50 ? canvas.parentElement.offsetWidth : 1280);
   var H = 220;
   canvas.width  = W * DPR;
