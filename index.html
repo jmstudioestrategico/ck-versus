@@ -436,7 +436,7 @@ body {
     <div class="tab" data-tab="7">Entregáveis</div>
     <div class="tab" data-tab="4">Reuniões</div>
     <div class="tab" data-tab="5">RACI</div>
-    <a href="#" target="_blank" class="tab" style="text-decoration:none;" title="Abrir BEP no Autodoc">BEP ↗</a>
+    <a id="link-bep" href="#" target="_blank" class="tab" style="text-decoration:none;" title="Abrir BEP no Autodoc"><span class="link-label">BEP ↗</span></a>
   </div>
 </div>
 
@@ -490,9 +490,9 @@ body {
 
   <!-- ══ TAB 2: CRONOGRAMA ══ -->
   <div class="panel" id="panel-2">
-    <a href="#" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:12px;width:100%;background:var(--off);color:var(--black);text-decoration:none;padding:16px 24px;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;border:1px solid var(--border);border-left:4px solid var(--green);margin-bottom:24px;box-sizing:border-box;transition:background .18s,border-color .18s;" onmouseover="this.style.background='#EAEAE8'" onmouseout="this.style.background='var(--off)'">
+    <a id="link-cronograma" href="#" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:12px;width:100%;background:var(--off);color:var(--black);text-decoration:none;padding:16px 24px;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;border:1px solid var(--border);border-left:4px solid var(--green);margin-bottom:24px;box-sizing:border-box;transition:background .18s,border-color .18s;" onmouseover="this.style.background='#EAEAE8'" onmouseout="this.style.background='var(--off)'">
       <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="1" y="2" width="16" height="14" rx="1.5" stroke="var(--black)" stroke-width="1.6"/><path d="M5 7h8M5 10.5h5" stroke="var(--black)" stroke-width="1.5" stroke-linecap="round"/></svg>
-      Ver Cronograma Detalhado
+      <span class="link-label">Ver Cronograma Detalhado</span>
     </a>
     <div class="card mb28">
       <div class="card-title">Linha do tempo macro · Jan/2026 — Mai/2029</div>
@@ -581,9 +581,9 @@ body {
           <input type="date" id="reu-date-to" style="font-family:'Roboto',sans-serif;font-size:10px;padding:5px 8px;border:1px solid var(--border);background:var(--white);color:var(--black);outline:none;border-radius:3px;height:32px;">
           <button id="reu-date-clear" style="font-family:'Roboto',sans-serif;font-size:10px;padding:5px 10px;border:1px solid var(--border);background:var(--white);color:var(--muted);cursor:pointer;border-radius:3px;height:32px;">Limpar</button>
         </div>
-        <a href="#" target="_blank" class="filter-btn" style="text-decoration:none;display:inline-flex;align-items:center;gap:6px;">
+        <a id="link-atas" href="#" target="_blank" class="filter-btn" style="text-decoration:none;display:inline-flex;align-items:center;gap:6px;">
           <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1.5 9.5l8-8M9.5 1.5H4M9.5 1.5v5.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Ver Atas
+          <span class="link-label">Ver Atas</span>
         </a>
       </div>
     </div>
@@ -653,9 +653,9 @@ body {
         </div>
       </div>
     </div>
-      <a href="#" target="_blank" class="filter-btn" style="text-decoration:none;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;margin-left:auto;align-self:flex-end;">
+      <a id="link-autodoc" href="#" target="_blank" class="filter-btn" style="text-decoration:none;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;margin-left:auto;align-self:flex-end;">
         <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1.5 9.5l8-8M9.5 1.5H4M9.5 1.5v5.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Ver Autodoc
+        <span class="link-label">Ver Autodoc</span>
       </a>
     </div>
 
@@ -776,6 +776,17 @@ function corDaEtapa(id) {
   var e = etapas.find(function(x) { return x.id === id; });
   return e ? e.cor : '#888';
 }
+
+// LINKS_START
+// Links do painel (BEP, cronograma, atas, autodoc). Vêm da aba 'Links' da
+// planilha do dashboard — NÃO editar aqui, editar na aba. Gerado pelo script.
+var links = {
+  "bep": { rotulo: "BEP ↗", url: "", ativo: true },
+  "cronograma": { rotulo: "Ver Cronograma Detalhado", url: "", ativo: true },
+  "atas": { rotulo: "Ver Atas", url: "", ativo: true },
+  "autodoc": { rotulo: "Ver Autodoc", url: "", ativo: true },
+};
+// LINKS_END
 
 const disciplinas = [
   { nome:"Bernardes",          tipo:"Arquitetura",         status:"", perc:0, proxEntrega:"--", obs:"" },
@@ -1287,6 +1298,30 @@ var _eb = document.getElementById('etapas-bars'); if (_eb) _eb.innerHTML = etapa
   var titulo = fasesVis.length ? 'Ciclos — ' + fasesVis.join(' + ') : 'Ciclos';
   document.querySelectorAll('.ciclos-title').forEach(function(el) {
     el.textContent = titulo;
+  });
+})();
+
+// ── LINKS DO PAINEL ─────────────────────────────────────────────────────────
+// Aplica os links da aba 'Links' (objeto `links`, injetado pelo script) às
+// âncoras com id "link-<chave>". Regras:
+//   - sem url, ou ativo=false  → esconde o link (não mostra link morto)
+//   - rotulo preenchido        → troca o texto (.link-label); vazio = mantém
+//                                o texto padrão do template
+(function() {
+  if (typeof links === 'undefined' || !links) return;
+  Object.keys(links).forEach(function(chave) {
+    var el = document.getElementById('link-' + chave);
+    if (!el) return;
+    var L = links[chave] || {};
+    var url = L.url ? String(L.url).trim() : '';
+    var visivel = (L.ativo !== false) && url !== '';
+    if (!visivel) { el.style.display = 'none'; return; }
+    el.style.display = '';
+    el.href = url;
+    if (L.rotulo && String(L.rotulo).trim() !== '') {
+      var lbl = el.querySelector('.link-label');
+      if (lbl) lbl.textContent = L.rotulo;
+    }
   });
 })();
 var _cl = document.getElementById('ciclos-list'); if (_cl) _cl.innerHTML = ciclosVisiveis().map(function(c) {
