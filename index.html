@@ -781,10 +781,10 @@ function corDaEtapa(id) {
 // Links do painel (BEP, cronograma, atas, autodoc). Vêm da aba 'Links' da
 // planilha do dashboard — NÃO editar aqui, editar na aba. Gerado pelo script.
 var links = {
-  "bep": { rotulo: "BEP ↗", url: "https://plataforma.autodoc.com.br/projetos/directories/folder/69c16f3fb757bee835ab62c6", ativo: true },
-  "cronograma": { rotulo: "Ver Cronograma Detalhado", url: "https://plataforma.autodoc.com.br/projetos/directories/folder/69c16f3fb757bee835ab62c4", ativo: true },
-  "atas": { rotulo: "Ver Atas", url: "", ativo: true },
-  "autodoc": { rotulo: "Ver Autodoc", url: "", ativo: true },
+  "bep": { rotulo: "BEP ↗", url: "https://plataforma.autodoc.com.br/projetos/directories/folder/69c16f3fb757bee835ab60c0", ativo: true },
+  "cronograma": { rotulo: "Ver Cronograma Detalhado", url: "https://plataforma.autodoc.com.br/projetos/directories/folder/69c199560c1c1cd968fe13bc", ativo: true },
+  "atas": { rotulo: "Ver Atas", url: "https://plataforma.autodoc.com.br/projetos/directories/folder/69c16f3fb757bee835ab60c2", ativo: true },
+  "autodoc": { rotulo: "Ver Autodoc", url: "https://plataforma.autodoc.com.br/projetos/directories/folder/69c16f3fb757bee835ab606a", ativo: true },
 };
 // LINKS_END
 
@@ -811,18 +811,18 @@ const disciplinas = [
 // ─────────────────────────────────────────────────────────────────────────────
 
 var acoesSemanal = [
-  // ── Controle de Ações (VRSCONTROLE_ACOES — 02/06/2026) ──────────────────────
+  // ── Controle de Ações (VRSCONTROLE_ACOES — 03/06/2026) ──────────────────────
   // Não mesclar com acoesCROR aqui — a junção é feita em var acoes abaixo.
   { prazo:"--", item:"Cronograma", desc:"Definição do cronograma geral e demais organizações", resp:"CK", criticidade:"Crítica", status:"Em andamento", conclusao:"-", diasRest:"--", obs:"E-mail CK 24/04/2026: Sobre o cronograma, vamos trabalhar com o prevision. Estamos na fase de aquisição dos pacotes de incorporação, aviso quando a aquisição for concluída para nos alinharmos quanto aos cronogramas.", inicio:"15/04/26", disc:"CONSTRUTORA" },
   { prazo:"24/04/26", item:"Briefing Arquitetura", desc:"Preenchimento e envio do briefing a MANNZ, para start da transcrição arquitetura executiva", resp:"CK", criticidade:"Alta", status:"Concluído", conclusao:"24/04/26", diasRest:"--", obs:"Briefing enviado pela Mannz dia 15/04/2026", inicio:"15/04/26", disc:"CONSTRUTORA" },
   { prazo:"24/04/26", item:"BEP", desc:"Revisão das informações conforme padrão da CK", resp:"CK", criticidade:"Alta", status:"Concluído", conclusao:"24/04/26", diasRest:"--", obs:"Enviado BEP prévio pela Mannz no dia 15/04. Aguardando retorno CK para verificação e liberação final do documento", inicio:"15/04/26", disc:"CONSTRUTORA" },
-  { prazo:"30/04/26", item:"Entregáveis", desc:"Envio para a Mannz, dos escopos dos escritórios contratados", resp:"CK", criticidade:"Alta", status:"Com atraso", conclusao:"-", diasRest:"-33", obs:"Com o recebimento, a Mannz irá revisar os Entregáveis para liberar a validação aos escritórios", inicio:"15/04/26", disc:"CONSTRUTORA" },
+  { prazo:"30/04/26", item:"Entregáveis", desc:"Envio para a Mannz, dos escopos dos escritórios contratados", resp:"CK", criticidade:"Alta", status:"Com atraso", conclusao:"-", diasRest:"-34", obs:"Com o recebimento, a Mannz irá revisar os Entregáveis para liberar a validação aos escritórios", inicio:"15/04/26", disc:"CONSTRUTORA" },
   { prazo:"30/04/26", item:"Quantitativo", desc:"Envio para a Mannz, da estrutura de quantitativo (tipos de aberturas e medições)", resp:"CK", criticidade:"Alta", status:"Concluído", conclusao:"30/04/26", diasRest:"--", obs:"Com o recebimento, a Mannz irá analisar as possibilidades de atendimento na modelagem e extração dos mesmos", inicio:"15/04/26", disc:"CONSTRUTORA" },
 ];
 
 var acoesCROR = [
   // ── Tarefas do Project (CRO) ─────────────────────────────────────────────────────────
-  // Gerado em 02/06/2026. Atualizado pela automação CROR.
+  // Gerado em 03/06/2026. Atualizado pela automação CROR.
   // Não mesclar com acoesSemanal aqui — a junção é feita em var acoes abaixo.
   { prazo:"27/07/26", item:"EMISSÃO CONSULTA PRÉVIA (ANTEPROJETO 02)", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Media", status:"Nao iniciado", conclusao:"-", diasRest:"--", obs:"", inicio:"14/07/26", disc:"ELÉTRICO E TELECOMUNICAÇÕES", entregavel:false },
   { prazo:"15/10/26", item:"ELABORAÇÃO ESTUDO DE PROTEÇÃO (PRÉ EXECUTIVO)", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Media", status:"Nao iniciado", conclusao:"-", diasRest:"--", obs:"", inicio:"01/10/26", disc:"ELÉTRICO E TELECOMUNICAÇÕES", entregavel:false },
@@ -1004,7 +1004,7 @@ const projEnd   = new Date(Math.max.apply(null,_etDates));
 // com a data de atualização dos dados do CROR (campo max "Criado" do xlsx).
 // NÃO usar new Date() sem argumento — isso pega a data de hoje, não do CROR.
 const _CROR_DATA_REF = "2026-06-02"; // ← GAS: max campo Criado do CROR
-const _EXEC_DATA = "2026-06-02"; // ← GAS: data da última execução do script
+const _EXEC_DATA = "2026-06-03"; // ← GAS: data da última execução do script
 // Deriva o objeto Date a partir da string — sem timezone issues:
 const dataReferencia = (function(s) {
   var p = s.split("-");
