@@ -495,7 +495,7 @@ body {
       <span class="link-label">Ver Cronograma Detalhado</span>
     </a>
     <div class="card mb28">
-      <div class="card-title">Linha do tempo macro · Jan/2026 — Mai/2029</div>
+      <div class="card-title" id="gantt-title">Linha do tempo macro · Mai/2026 — Mar/2027</div>
       <div id="gantt-main"></div>
     </div>
     <div class="g2">
@@ -811,18 +811,18 @@ const disciplinas = [
 // ─────────────────────────────────────────────────────────────────────────────
 
 var acoesSemanal = [
-  // ── Controle de Ações (VRSCONTROLE_ACOES — 03/06/2026) ──────────────────────
+  // ── Controle de Ações (VRSCONTROLE_ACOES — 09/06/2026) ──────────────────────
   // Não mesclar com acoesCROR aqui — a junção é feita em var acoes abaixo.
   { prazo:"--", item:"Cronograma", desc:"Definição do cronograma geral e demais organizações", resp:"CK", criticidade:"Crítica", status:"Em andamento", conclusao:"-", diasRest:"--", obs:"E-mail CK 24/04/2026: Sobre o cronograma, vamos trabalhar com o prevision. Estamos na fase de aquisição dos pacotes de incorporação, aviso quando a aquisição for concluída para nos alinharmos quanto aos cronogramas.", inicio:"15/04/26", disc:"CONSTRUTORA" },
   { prazo:"24/04/26", item:"Briefing Arquitetura", desc:"Preenchimento e envio do briefing a MANNZ, para start da transcrição arquitetura executiva", resp:"CK", criticidade:"Alta", status:"Concluído", conclusao:"24/04/26", diasRest:"--", obs:"Briefing enviado pela Mannz dia 15/04/2026", inicio:"15/04/26", disc:"CONSTRUTORA" },
   { prazo:"24/04/26", item:"BEP", desc:"Revisão das informações conforme padrão da CK", resp:"CK", criticidade:"Alta", status:"Concluído", conclusao:"24/04/26", diasRest:"--", obs:"Enviado BEP prévio pela Mannz no dia 15/04. Aguardando retorno CK para verificação e liberação final do documento", inicio:"15/04/26", disc:"CONSTRUTORA" },
-  { prazo:"30/04/26", item:"Entregáveis", desc:"Envio para a Mannz, dos escopos dos escritórios contratados", resp:"CK", criticidade:"Alta", status:"Com atraso", conclusao:"-", diasRest:"-34", obs:"Com o recebimento, a Mannz irá revisar os Entregáveis para liberar a validação aos escritórios", inicio:"15/04/26", disc:"CONSTRUTORA" },
+  { prazo:"30/04/26", item:"Entregáveis", desc:"Envio para a Mannz, dos escopos dos escritórios contratados", resp:"CK", criticidade:"Alta", status:"Com atraso", conclusao:"-", diasRest:"-40", obs:"Com o recebimento, a Mannz irá revisar os Entregáveis para liberar a validação aos escritórios", inicio:"15/04/26", disc:"CONSTRUTORA" },
   { prazo:"30/04/26", item:"Quantitativo", desc:"Envio para a Mannz, da estrutura de quantitativo (tipos de aberturas e medições)", resp:"CK", criticidade:"Alta", status:"Concluído", conclusao:"30/04/26", diasRest:"--", obs:"Com o recebimento, a Mannz irá analisar as possibilidades de atendimento na modelagem e extração dos mesmos", inicio:"15/04/26", disc:"CONSTRUTORA" },
 ];
 
 var acoesCROR = [
   // ── Tarefas do Project (CRO) ─────────────────────────────────────────────────────────
-  // Gerado em 03/06/2026. Atualizado pela automação CROR.
+  // Gerado em 09/06/2026. Atualizado pela automação CROR.
   // Não mesclar com acoesSemanal aqui — a junção é feita em var acoes abaixo.
   { prazo:"27/07/26", item:"EMISSÃO CONSULTA PRÉVIA (ANTEPROJETO 02)", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Media", status:"Nao iniciado", conclusao:"-", diasRest:"--", obs:"", inicio:"14/07/26", disc:"ELÉTRICO E TELECOMUNICAÇÕES", entregavel:false },
   { prazo:"15/10/26", item:"ELABORAÇÃO ESTUDO DE PROTEÇÃO (PRÉ EXECUTIVO)", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Media", status:"Nao iniciado", conclusao:"-", diasRest:"--", obs:"", inicio:"01/10/26", disc:"ELÉTRICO E TELECOMUNICAÇÕES", entregavel:false },
@@ -1004,7 +1004,7 @@ const projEnd   = new Date(Math.max.apply(null,_etDates));
 // com a data de atualização dos dados do CROR (campo max "Criado" do xlsx).
 // NÃO usar new Date() sem argumento — isso pega a data de hoje, não do CROR.
 const _CROR_DATA_REF = "2026-06-02"; // ← GAS: max campo Criado do CROR
-const _EXEC_DATA = "2026-06-03"; // ← GAS: data da última execução do script
+const _EXEC_DATA = "2026-06-09"; // ← GAS: data da última execução do script
 // Deriva o objeto Date a partir da string — sem timezone issues:
 const dataReferencia = (function(s) {
   var p = s.split("-");
@@ -1047,25 +1047,8 @@ document.addEventListener("DOMContentLoaded", function() {
   if (h) h.textContent = execFmt;
   if (f) f.textContent = execFmt;
 
-  // Título do cronograma — calcula do min/max das etapas
-  var mNomes = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
-  var mMap = {janeiro:0,fevereiro:1,'março':2,abril:3,maio:4,junho:5,julho:6,agosto:7,setembro:8,outubro:9,novembro:10,dezembro:11};
-  var maxY=2026, maxM=0;
-  etapas.forEach(function(e) {
-    var s = e.fim.toLowerCase();
-    for (var m in mMap) {
-      if (s.indexOf(m) >= 0) {
-        var parts = e.fim.split(/\s+/);
-        var y = parseInt(parts[2]||parts[1]);
-        if (y > maxY || (y === maxY && mMap[m] > maxM)) { maxY = y; maxM = mMap[m]; }
-        break;
-      }
-    }
-  });
-  var titleEl = document.querySelector('.card-title');
-  if (titleEl && titleEl.textContent.indexOf('Linha do tempo macro') >= 0) {
-    titleEl.textContent = 'Linha do tempo macro · Jan/2026 — ' + mNomes[maxM] + '/' + maxY;
-  }
+  // Título do Gantt é definido em renderGantt() a partir do mesmo min/max do
+  // eixo (fonte única). Não calcular aqui para não divergir das datas reais.
 });
 const _fim90ISO = window._fim90ISO;
 const _fim90    = window._fim90;
@@ -1312,11 +1295,18 @@ var _eb = document.getElementById('etapas-bars'); if (_eb) _eb.innerHTML = etapa
   Object.keys(links).forEach(function(chave) {
     var el = document.getElementById('link-' + chave);
     if (!el) return;
+    // Captura o display original do template UMA vez. Cada link tem o seu
+    // (cronograma=flex, atas/autodoc=inline-flex, bep=classe). Restaurar com
+    // '' quebra o layout: o <a> volta a display:inline e perde width:100%,
+    // justify-content e align — foi o que deslocou o botão do cronograma.
+    if (el.dataset.origDisplay === undefined) {
+      el.dataset.origDisplay = el.style.display || '';
+    }
     var L = links[chave] || {};
     var url = L.url ? String(L.url).trim() : '';
     var visivel = (L.ativo !== false) && url !== '';
     if (!visivel) { el.style.display = 'none'; return; }
-    el.style.display = '';
+    el.style.display = el.dataset.origDisplay;
     el.href = url;
     if (L.rotulo && String(L.rotulo).trim() !== '') {
       var lbl = el.querySelector('.link-label');
@@ -1354,6 +1344,17 @@ function renderGantt(id) {
   });
   var allS = eventos.map(function(e){return e.s;}), allE = eventos.map(function(e){return e.e;});
   var gStart = new Date(Math.min.apply(null,allS)), gEnd = new Date(Math.max.apply(null,allE));
+  // Título da linha do tempo: derivado do MESMO min/max do eixo (fonte única).
+  // Garante que o título acompanhe sempre as datas reais das etapas.
+  var _mG = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+  // parseDMYgantt cria datas em UTC; usar getUTC* evita deslocar o mês em
+  // fusos negativos (ex.: BRT/UTC-3 mostraria Fev em vez de Mar).
+  var _gt = document.getElementById('gantt-title');
+  if (_gt && isFinite(gStart.getTime()) && isFinite(gEnd.getTime())) {
+    _gt.textContent = 'Linha do tempo macro · '
+      + _mG[gStart.getUTCMonth()] + '/' + gStart.getUTCFullYear()
+      + ' — ' + _mG[gEnd.getUTCMonth()] + '/' + gEnd.getUTCFullYear();
+  }
   var nowPct = Math.min(100, Math.round(((hoje - gStart) / (gEnd - gStart)) * 100));
   var labels = [];
   var y0 = gStart.getFullYear(), y1 = gEnd.getFullYear();
