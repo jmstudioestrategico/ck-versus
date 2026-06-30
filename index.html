@@ -1114,7 +1114,7 @@ const _fim90ISO = window._fim90ISO;
 const _fim90    = window._fim90;
 const hoje           = dataReferencia;
 // PERCGERAL_START
-const percGeral = 0;
+const percGeral = 2;
 // PERCGERAL_END
 const prioLabel = { critica:"Critica", alta:"Alta", media:"Media" };
 const stdLabel  = { andamento:"Em andamento", futuro:"Futuro", resolvido:"Concluido" };
@@ -1264,7 +1264,7 @@ function goToEntregaveis(disc) {
   var hoje_kpi = dataReferencia;
   var fim90    = _fim90; // dataReferencia + 90 dias
 
-  // All counts use 90-day window + computeAcaoStatus for consistency
+  // acoes90 = janela de 90 dias (usada SÓ para as "futuras próximas").
   var acoes90 = acoes.filter(function(p) {
     var parts = (p.prazo || '').split('/');
     if (parts.length < 3) return true; // no parseable date = include
@@ -1272,12 +1272,12 @@ function goToEntregaveis(disc) {
     return d >= hoje_kpi && d <= fim90;
   });
 
-  var emAndamento = acoes90.filter(function(p) { return computeAcaoStatus(p) === 'Em andamento'; }).length;
-  var futuros     = acoes90.filter(function(p) {
-    if (p.status !== 'Nao iniciado') return false;
-    var d = parsePrazoAcao(p.prazo);
-    return d && d > hoje_kpi;
-  }).length;
+  // "Em andamento" reflete o ESTADO ATUAL — conta TODAS, sem janela de prazo
+  // (uma ação em andamento é em andamento independente de quando vence).
+  var emAndamento = acoes.filter(function(p) { return computeAcaoStatus(p) === 'Em andamento'; }).length;
+  // "Futuras" são uma previsão de curto prazo — só as dos próximos 90 dias.
+  // Status "Futuro" vem da base (coluna STATUS), não mais inferido por prazo.
+  var futuros     = acoes90.filter(function(p) { return computeAcaoStatus(p) === 'Futuro'; }).length;
   var abertos     = emAndamento + futuros +
     acoes90.filter(function(p) { return computeAcaoStatus(p) === 'Pendente'; }).length;
   var discOk      = disciplinas.filter(function(d) { return d.status === 'ok'; }).length;
@@ -1824,7 +1824,7 @@ renderDiscStatus();
     var cb   = crioBg[crit]  || crioBg['Media'];
     var ct   = crioTxt[crit] || crioTxt['Media'];
     return '<div class="card card-anchor" onclick="goToAcaoItem(\''
-      + encodeURIComponent(a.item) + '\')" style="border-top:3px solid ' + bdr + ';cursor:pointer;">'
+      + encodeURIComponent(a.item) + '\',\'' + (a.disc ? encodeURIComponent(a.disc) : '') + '\',' + acoes.indexOf(a) + ')" style="border-top:3px solid ' + bdr + ';cursor:pointer;">'
       + '<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:6px;margin-bottom:8px;">'
       + '<span style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;font-weight:500;'
       +   'padding:2px 7px;border-radius:2px;background:' + sb + ';color:' + st + ';">' + sl + '</span>'
@@ -3795,10 +3795,10 @@ function drawTrendChart() {
   //   Realizado = % atual de cada fase * peso (horas) / total
   //   Planejado = progresso linear planejado por fase acumulado
   //   Projeção  = curva planejada reescalada a partir do ponto atual
-  var realData = [0, 0, null, null, null, null, null, null, null, null, null];
+  var realData = [2, 2, null, null, null, null, null, null, null, null, null];
   // Linha planejada (cronograma original — estimativa)
   var planejado = [6.7, 13.3, 20, 33.3, 40, 53.3, 66.7, 80, 86.7, 93.3, 100];
-  var projecao = [null, 0, 11.1, 22.2, 33.3, 44.4, 55.6, 66.7, 77.8, 88.9, 100];
+  var projecao = [null, 2, 12.9, 23.8, 34.7, 45.6, 56.4, 67.3, 78.2, 89.1, 100];
   var W = (canvas.parentElement && canvas.parentElement.clientWidth > 50) ? canvas.parentElement.clientWidth : (canvas.parentElement && canvas.parentElement.offsetWidth > 50 ? canvas.parentElement.offsetWidth : 1280);
   var H = 220;
   canvas.width  = W * DPR;
