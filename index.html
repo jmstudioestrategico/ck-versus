@@ -793,7 +793,7 @@ var respDisplayName = {
 // ── DATA ──────────────────────────────────────────────────────────────────────
 // ETAPAS_START
 const etapas = [
-  { id:"AP", label:"Anteprojeto (AP)", inicio:"15/05/26", fim:"25/08/26", progresso:15, cor:"#378ADD" },
+  { id:"AP", label:"Anteprojeto (AP)", inicio:"15/05/26", fim:"25/08/26", progresso:18, cor:"#378ADD" },
   { id:"PE", label:"Pré-Executivo (PE)", inicio:"26/08/26", fim:"07/12/26", progresso:0, cor:"#7F77DD" },
   { id:"EX", label:"Executivo (EX)", inicio:"15/10/26", fim:"08/03/27", progresso:0, cor:"#BA7517" },
 ];
@@ -801,8 +801,8 @@ const etapas = [
 
 // CICLOS_START
 const ciclos = [
-  { id:"C1", etapa:"AP", label:"Ciclo 01", sub:"Arquitetura Mannz", inicio:"15/05/26", fim:"29/06/26", progresso:83 },
-  { id:"C2", etapa:"AP", label:"Ciclo 02", sub:"Anteprojeto 02", inicio:"30/06/26", fim:"25/08/26", progresso:2 },
+  { id:"C1", etapa:"AP", label:"Ciclo 01", sub:"Arquitetura Mannz", inicio:"15/05/26", fim:"29/06/26", progresso:100 },
+  { id:"C2", etapa:"AP", label:"Ciclo 02", sub:"Anteprojeto 02", inicio:"30/06/26", fim:"25/08/26", progresso:3 },
   { id:"C1", etapa:"PE", label:"Ciclo 01", sub:"Embasamento", inicio:"27/08/26", fim:"28/10/26", progresso:0 },
   { id:"C2", etapa:"PE", label:"Ciclo 02", sub:"Torre", inicio:"09/09/26", fim:"07/12/26", progresso:0 },
   { id:"C1", etapa:"EX", label:"Ciclo 01", sub:"Embasamento", inicio:"22/10/26", fim:"05/01/27", progresso:0 },
@@ -890,20 +890,20 @@ var acoesCROR = [
   { prazo:"26/02/27", item:"2º PROTOCOLO (EXECUTIVO)", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"15/02/27", disc:"ELÉTRICO E TELECOMUNICAÇÕES", entregavel:false },
   { prazo:"01/03/27", item:"APROVAÇÃO ELÉTRICO (CELESC)", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"01/03/27", disc:"ELÉTRICO E TELECOMUNICAÇÕES", entregavel:false },
   { prazo:"22/06/26", item:"ARQ: AP-C1 - TRANSCRIÇÃO ARQUITETURA + FACHADA (PRANCHAS E MODELO)", desc:"", resp:"MANNZ", criticidade:"Alta", status:"Concluido", conclusao:"22/06/26", diasRest:"--", obs:"", inicio:"18/05/26", disc:"COMPATIBILIZAÇÃO", entregavel:false },
-  { prazo:"29/06/26", item:"CK: REFERENTE A ENTREGA DA ARQUITETURA REVISADA AP-C2", desc:"", resp:"CK", criticidade:"Alta", status:"Em andamento", conclusao:"-", diasRest:"--", obs:"", inicio:"23/06/26", disc:"CONSTRUTORA", entregavel:false },
+  { prazo:"29/06/26", item:"CK: REFERENTE A ENTREGA DA ARQUITETURA REVISADA AP-C2", desc:"", resp:"CK", criticidade:"Alta", status:"Concluido", conclusao:"29/06/26", diasRest:"--", obs:"", inicio:"23/06/26", disc:"CONSTRUTORA", entregavel:false },
   { prazo:"06/07/26", item:"ILU: AP-C2 - PRANCHAS E MODELO (BASE DE PONTOS PARA PROJ.ELÉTRICO)", desc:"", resp:"TOTE", criticidade:"Alta", status:"Concluido", conclusao:"06/07/26", diasRest:"--", obs:"", inicio:"30/06/26", disc:"ILUMINAÇÃO FACHADA", entregavel:false },
-  { prazo:"13/07/26", item:"ELE: AP-C2 - ABSORVER LUMINOTÉCNICO FACHADA", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"30/06/26", disc:"ELÉTRICO E TELECOMUNICAÇÕES", entregavel:false },
-  { prazo:"13/07/26", item:"ELE: AP-C2 - ABSORVER LUMINOTÉCNICO INTERIORES", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"30/06/26", disc:"ELÉTRICO E TELECOMUNICAÇÕES", entregavel:false },
-  { prazo:"13/07/26", item:"ELE: AP-C2 - PRANCHAS E MODELO", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"30/06/26", disc:"ELÉTRICO E TELECOMUNICAÇÕES", entregavel:false },
-  { prazo:"13/07/26", item:"COM: AP-C2 - PRANCHAS E MODELO", desc:"", resp:"EM CONTRATAÇÃO", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"30/06/26", disc:"COMUNICAÇÃO VISUAL", entregavel:false },
-  { prazo:"13/07/26", item:"HID: AP-C2 - ABSORVER IRRIGAÇÃO", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"30/06/26", disc:"HIDRÁULICO", entregavel:false },
-  { prazo:"13/07/26", item:"HID: AP-C2 - PRANCHAS E MODELO", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"30/06/26", disc:"HIDRÁULICO", entregavel:false },
-  { prazo:"13/07/26", item:"SAN: AP-C2 - PRANCHAS E MODELO", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"30/06/26", disc:"SANITÁRIO", entregavel:false },
-  { prazo:"13/07/26", item:"PCI: AP-C2 - PRANCHAS E MODELO", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"30/06/26", disc:"PREVENTIVO", entregavel:false },
-  { prazo:"13/07/26", item:"CLI: AP-C2 - PRANCHAS E MODELO", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"30/06/26", disc:"CLIMATIZAÇÃO E EXAUSTÃO", entregavel:false },
-  { prazo:"13/07/26", item:"PIS: AP-C2 - PRANCHAS E MODELO", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"30/06/26", disc:"PISCINA", entregavel:false },
-  { prazo:"13/07/26", item:"SPD: AP-C2 - PRANCHAS E MODELO", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"30/06/26", disc:"SPDA", entregavel:false },
-  { prazo:"27/07/26", item:"ESQ: AP-C2 - RELATÓRIO PRELIMINAR", desc:"", resp:"AUM PROJETOS", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"30/06/26", disc:"ESQUADRIAS", entregavel:false },
+  { prazo:"13/07/26", item:"ELE: AP-C2 - ABSORVER LUMINOTÉCNICO FACHADA", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Media", status:"Em andamento", conclusao:"-", diasRest:"--", obs:"", inicio:"30/06/26", disc:"ELÉTRICO E TELECOMUNICAÇÕES", entregavel:false },
+  { prazo:"13/07/26", item:"ELE: AP-C2 - ABSORVER LUMINOTÉCNICO INTERIORES", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Media", status:"Em andamento", conclusao:"-", diasRest:"--", obs:"", inicio:"30/06/26", disc:"ELÉTRICO E TELECOMUNICAÇÕES", entregavel:false },
+  { prazo:"13/07/26", item:"ELE: AP-C2 - PRANCHAS E MODELO", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Media", status:"Em andamento", conclusao:"-", diasRest:"--", obs:"", inicio:"30/06/26", disc:"ELÉTRICO E TELECOMUNICAÇÕES", entregavel:false },
+  { prazo:"13/07/26", item:"HID: AP-C2 - ABSORVER IRRIGAÇÃO", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Media", status:"Em andamento", conclusao:"-", diasRest:"--", obs:"", inicio:"30/06/26", disc:"HIDRÁULICO", entregavel:false },
+  { prazo:"13/07/26", item:"HID: AP-C2 - PRANCHAS E MODELO", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Media", status:"Em andamento", conclusao:"-", diasRest:"--", obs:"", inicio:"30/06/26", disc:"HIDRÁULICO", entregavel:false },
+  { prazo:"13/07/26", item:"SAN: AP-C2 - PRANCHAS E MODELO", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Media", status:"Em andamento", conclusao:"-", diasRest:"--", obs:"", inicio:"30/06/26", disc:"SANITÁRIO", entregavel:false },
+  { prazo:"13/07/26", item:"PCI: AP-C2 - PRANCHAS E MODELO", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Media", status:"Em andamento", conclusao:"-", diasRest:"--", obs:"", inicio:"30/06/26", disc:"PREVENTIVO", entregavel:false },
+  { prazo:"13/07/26", item:"COM: AP-C2 - PRANCHAS E MODELO", desc:"", resp:"EM CONTRATAÇÃO", criticidade:"Media", status:"Em andamento", conclusao:"-", diasRest:"--", obs:"", inicio:"30/06/26", disc:"COMUNICAÇÃO VISUAL", entregavel:false },
+  { prazo:"13/07/26", item:"CLI: AP-C2 - PRANCHAS E MODELO", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Media", status:"Em andamento", conclusao:"-", diasRest:"--", obs:"", inicio:"30/06/26", disc:"CLIMATIZAÇÃO E EXAUSTÃO", entregavel:false },
+  { prazo:"13/07/26", item:"PIS: AP-C2 - PRANCHAS E MODELO", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Media", status:"Em andamento", conclusao:"-", diasRest:"--", obs:"", inicio:"30/06/26", disc:"PISCINA", entregavel:false },
+  { prazo:"13/07/26", item:"SPD: AP-C2 - PRANCHAS E MODELO", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Media", status:"Em andamento", conclusao:"-", diasRest:"--", obs:"", inicio:"30/06/26", disc:"SPDA", entregavel:false },
+  { prazo:"27/07/26", item:"ESQ: AP-C2 - RELATÓRIO PRELIMINAR", desc:"", resp:"AUM PROJETOS", criticidade:"Media", status:"Em andamento", conclusao:"-", diasRest:"--", obs:"", inicio:"30/06/26", disc:"ESQUADRIAS", entregavel:false },
   { prazo:"14/07/26", item:"ARQ: AP-C2 - VERIFICAÇÃO ENTREGÁVEIS", desc:"", resp:"MANNZ", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"14/07/26", disc:"COMPATIBILIZAÇÃO", entregavel:false },
   { prazo:"18/08/26", item:"ARQ: AP-C2 - COMPATIBILIZAÇÃO RC.R00 (TODO EDIFÍCIO)", desc:"", resp:"MANNZ", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"15/07/26", disc:"COMPATIBILIZAÇÃO", entregavel:false },
   { prazo:"25/08/26", item:"ARQ: AP-C2 - ATUALIZAÇÃO ARQUITETURA CONFORME COMPATIBILIZAÇÃO E RELATÓRIO PRELIMINAR", desc:"", resp:"MANNZ", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"19/08/26", disc:"COMPATIBILIZAÇÃO", entregavel:false },
@@ -1064,7 +1064,7 @@ const projEnd   = new Date(Math.max.apply(null,_etDates));
 // AUTOMAÇÃO: substituir APENAS o valor da string abaixo (formato YYYY-MM-DD)
 // com a data de atualização dos dados do CROR (campo max "Criado" do xlsx).
 // NÃO usar new Date() sem argumento — isso pega a data de hoje, não do CROR.
-const _CROR_DATA_REF = "2026-06-29"; // ← GAS: max campo Criado do CROR
+const _CROR_DATA_REF = "2026-07-01"; // ← GAS: max campo Criado do CROR
 const _EXEC_DATA = "2026-07-01"; // ← GAS: data da última execução do script
 // Deriva o objeto Date a partir da string — sem timezone issues:
 const dataReferencia = (function(s) {
@@ -3932,10 +3932,10 @@ function drawTrendChart() {
   //   Realizado = % atual de cada fase * peso (horas) / total
   //   Planejado = progresso linear planejado por fase acumulado
   //   Projeção  = curva planejada reescalada a partir do ponto atual
-  var realData = [2, 2, null, null, null, null, null, null, null, null, null];
+  var realData = [2, 2, 2, null, null, null, null, null, null, null, null];
   // Linha planejada (cronograma original — estimativa)
   var planejado = [6.7, 13.3, 20, 33.3, 40, 53.3, 66.7, 80, 86.7, 93.3, 100];
-  var projecao = [null, 2, 12.9, 23.8, 34.7, 45.6, 56.4, 67.3, 78.2, 89.1, 100];
+  var projecao = [null, null, 2, 14.3, 26.5, 38.8, 51, 63.3, 75.5, 87.8, 100];
   var W = (canvas.parentElement && canvas.parentElement.clientWidth > 50) ? canvas.parentElement.clientWidth : (canvas.parentElement && canvas.parentElement.offsetWidth > 50 ? canvas.parentElement.offsetWidth : 1280);
   var H = 220;
   canvas.width  = W * DPR;
