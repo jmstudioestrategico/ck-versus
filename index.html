@@ -871,18 +871,18 @@ const disciplinas = [
 // ─────────────────────────────────────────────────────────────────────────────
 
 var acoesSemanal = [
-  // ── Controle de Ações (VRSCONTROLE_ACOES — 16/07/2026) ──────────────────────
+  // ── Controle de Ações (VRSCONTROLE_ACOES — 17/07/2026) ──────────────────────
   // Não mesclar com acoesCROR aqui — a junção é feita em var acoes abaixo.
   { prazo:"--", item:"Cronograma", desc:"Definição do cronograma geral e demais organizações", resp:"CK", criticidade:"Crítica", status:"Concluído", conclusao:"--", diasRest:"--", obs:"E-mail CK 24/04/2026: Sobre o cronograma, vamos trabalhar com o prevision. Estamos na fase de aquisição dos pacotes de incorporação, aviso quando a aquisição for concluída para nos alinharmos quanto aos cronogramas.", inicio:"15/04/26", disc:"CONSTRUTORA" },
   { prazo:"24/04/26", item:"Briefing Arquitetura", desc:"Preenchimento e envio do briefing a MANNZ, para start da transcrição arquitetura executiva", resp:"CK", criticidade:"Alta", status:"Concluído", conclusao:"24/04/26", diasRest:"--", obs:"Briefing enviado pela Mannz dia 15/04/2026", inicio:"15/04/26", disc:"CONSTRUTORA" },
   { prazo:"24/04/26", item:"BEP", desc:"Revisão das informações conforme padrão da CK", resp:"CK", criticidade:"Alta", status:"Concluído", conclusao:"24/04/26", diasRest:"--", obs:"Enviado BEP prévio pela Mannz no dia 15/04. Aguardando retorno CK para verificação e liberação final do documento", inicio:"15/04/26", disc:"CONSTRUTORA" },
-  { prazo:"30/04/26", item:"Entregáveis", desc:"Envio para a Mannz, dos escopos dos escritórios contratados", resp:"CK", criticidade:"Crítica", status:"Com atraso", conclusao:"-", diasRest:"-77", obs:"Com o recebimento, a Mannz irá revisar os Entregáveis para liberar a validação aos escritórios", inicio:"15/04/26", disc:"CONSTRUTORA" },
+  { prazo:"30/04/26", item:"Entregáveis", desc:"Envio para a Mannz, dos escopos dos escritórios contratados", resp:"CK", criticidade:"Crítica", status:"Com atraso", conclusao:"-", diasRest:"-78", obs:"Com o recebimento, a Mannz irá revisar os Entregáveis para liberar a validação aos escritórios", inicio:"15/04/26", disc:"CONSTRUTORA" },
   { prazo:"30/04/26", item:"Quantitativo", desc:"Envio para a Mannz, da estrutura de quantitativo (tipos de aberturas e medições)", resp:"CK", criticidade:"Alta", status:"Concluído", conclusao:"30/04/26", diasRest:"--", obs:"Com o recebimento, a Mannz irá analisar as possibilidades de atendimento na modelagem e extração dos mesmos", inicio:"15/04/26", disc:"CONSTRUTORA" },
 ];
 
 var acoesCROR = [
   // ── Tarefas do Project (CRO) ─────────────────────────────────────────────────────────
-  // Gerado em 16/07/2026. Atualizado pela automação CROR.
+  // Gerado em 17/07/2026. Atualizado pela automação CROR.
   // Não mesclar com acoesSemanal aqui — a junção é feita em var acoes abaixo.
   { prazo:"03/08/26", item:"EMISSÃO CONSULTA PRÉVIA (ANTEPROJETO 02)", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"21/07/26", disc:"ELÉTRICO E TELECOMUNICAÇÕES", entregavel:false },
   { prazo:"19/10/26", item:"ELABORAÇÃO ESTUDO DE PROTEÇÃO (PRÉ EXECUTIVO)", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"05/10/26", disc:"ELÉTRICO E TELECOMUNICAÇÕES", entregavel:false },
@@ -1075,7 +1075,7 @@ const projEnd   = new Date(Math.max.apply(null,_etDates));
 // com a data de atualização dos dados do CROR (campo max "Criado" do xlsx).
 // NÃO usar new Date() sem argumento — isso pega a data de hoje, não do CROR.
 const _CROR_DATA_REF = "2026-07-16"; // ← GAS: max campo Criado do CROR
-const _EXEC_DATA = "2026-07-16"; // ← GAS: data da última execução do script
+const _EXEC_DATA = "2026-07-17"; // ← GAS: data da última execução do script
 // Deriva o objeto Date a partir da string — sem timezone issues:
 const dataReferencia = (function(s) {
   var p = s.split("-");
@@ -3550,34 +3550,56 @@ var AG = (function() {
     var inWeek = TASKS.filter(function(t) { return t.ini <= we && t.pz >= ws; });
     function colOf(d) { var diff = Math.round((dayOnly(d) - ws) / 86400000); return Math.max(0, Math.min(4, diff)); }
     var segs = inWeek.map(function(t) {
-      return { t:t, c0:colOf(t.ini < ws ? ws : t.ini), c1:colOf(t.pz > we ? we : t.pz), contL:t.ini < ws, contR:t.pz > we };
+      return { t:t, c0:colOf(t.ini < ws ? ws : t.ini), c1:colOf(t.pz > we ? we : t.pz), contL:t.ini < ws, contR:t.pz > we, lane:-1 };
     });
+    // Ordena barras LONGAS primeiro: elas definem a continuidade e devem ocupar
+    // as faixas atravessando a semana; as curtas depois preenchem os buracos por
+    // coluna. Dentro do mesmo comprimento, gravidade do status e depois início.
+    // Isso maximiza o preenchimento das 5 faixas em cada dia.
     segs.sort(function(a, b) {
+      var la = a.c1 - a.c0, lb = b.c1 - b.c0;
+      if (la !== lb) return lb - la;
       var sa = STORDER[a.t.st] !== undefined ? STORDER[a.t.st] : 9;
       var sb = STORDER[b.t.st] !== undefined ? STORDER[b.t.st] : 9;
       if (sa !== sb) return sa - sb;
       return a.c0 - b.c0;
     });
-    var lanes = [], placed = [];
+
+    // Alocação por coluna: cada dia tem 5 faixas (0..4). Uma barra ocupa a MESMA
+    // faixa em todas as colunas do seu intervalo (mantém a barra contínua). Só é
+    // colocada se essa faixa estiver livre em TODAS as suas colunas E a faixa for < 5.
+    // Assim cada dia exibe até 5 tarefas empilhadas, sem faixas desperdiçadas por
+    // barras longas de baixa prioridade.
+    var occupied = [[],[],[],[],[]]; // occupied[col] = array de bool por faixa
+    for (var ci = 0; ci < 5; ci++) { occupied[ci] = [false,false,false,false,false]; }
+    var placed = [];
+    var overflowByCol = [0,0,0,0,0];
+
     segs.forEach(function(s) {
       var laneIdx = -1;
-      for (var L = 0; L < lanes.length; L++) {
-        var fits = true;
-        for (var k = 0; k < lanes[L].length; k++) {
-          var o = lanes[L][k];
-          if (!(s.c1 < o.c0 || s.c0 > o.c1)) { fits = false; break; }
+      for (var L = 0; L < MAX_LANES; L++) {
+        var livre = true;
+        for (var col = s.c0; col <= s.c1; col++) {
+          if (occupied[col][L]) { livre = false; break; }
         }
-        if (fits) { laneIdx = L; break; }
+        if (livre) { laneIdx = L; break; }
       }
-      if (laneIdx === -1 && lanes.length < MAX_LANES) { lanes.push([]); laneIdx = lanes.length - 1; }
-      if (laneIdx >= 0) { lanes[laneIdx].push(s); placed.push({ lane:laneIdx, seg:s }); }
+      if (laneIdx >= 0) {
+        for (var col2 = s.c0; col2 <= s.c1; col2++) { occupied[col2][laneIdx] = true; }
+        s.lane = laneIdx;
+        placed.push({ lane:laneIdx, seg:s });
+      } else {
+        // não coube nas 5 faixas em nenhuma coluna do intervalo → conta como
+        // excedente em cada dia que a tarefa tocaria
+        for (var col3 = s.c0; col3 <= s.c1; col3++) { overflowByCol[col3]++; }
+      }
     });
-    var allByCol = [];
-    for (var c = 0; c < 5; c++) {
-      var d = new Date(ws); d.setDate(d.getDate()+c); d = dayOnly(d);
-      allByCol.push(inWeek.filter(function(t) { return t.ini <= d && t.pz >= d; }).length);
-    }
-    return { placed:placed, nLanes:Math.max(lanes.length,1), allByCol:allByCol, ws:ws, we:we, totalWeek:inWeek.length };
+
+    // faixas realmente usadas (para altura da grade)
+    var usedLanes = 0;
+    placed.forEach(function(p) { if (p.lane + 1 > usedLanes) usedLanes = p.lane + 1; });
+
+    return { placed:placed, nLanes:Math.max(usedLanes,1), overflowByCol:overflowByCol, ws:ws, we:we, totalWeek:inWeek.length };
   }
 
   function renderLegend() {
@@ -3632,8 +3654,8 @@ var AG = (function() {
 
     var more = '<div class="ag-row ag-more">';
     for (var i3 = 0; i3 < 5; i3++) {
-      var n = info.allByCol[i3];
-      if (n > 0) more += '<div class="ag-cell ag-mcell" onclick="AG.openDay(' + i3 + ')">' + n + ' ' + (n === 1 ? 'tarefa' : 'tarefas') + ' &#8250;</div>';
+      var n = info.overflowByCol[i3];
+      if (n > 0) more += '<div class="ag-cell ag-mcell" onclick="AG.openDay(' + i3 + ')">+' + n + ' ' + (n === 1 ? 'tarefa' : 'tarefas') + ' &#8250;</div>';
       else       more += '<div class="ag-cell ag-mcell ag-empty">—</div>';
     }
     more += '</div>';
