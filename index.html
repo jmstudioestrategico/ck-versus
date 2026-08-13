@@ -802,7 +802,7 @@ const etapas = [
 // CICLOS_START
 const ciclos = [
   { id:"C1", etapa:"AP", label:"Ciclo 01", sub:"Arquitetura Mannz", inicio:"15/05/26", fim:"29/06/26", progresso:100 },
-  { id:"C2", etapa:"AP", label:"Ciclo 02", sub:"Anteprojeto 02", inicio:"30/06/26", fim:"27/08/26", progresso:83 },
+  { id:"C2", etapa:"AP", label:"Ciclo 02", sub:"Anteprojeto 02", inicio:"30/06/26", fim:"27/08/26", progresso:82 },
   { id:"C1", etapa:"PE", label:"Ciclo 01", sub:"Embasamento", inicio:"28/08/26", fim:"29/10/26", progresso:0 },
   { id:"C2", etapa:"PE", label:"Ciclo 02", sub:"Torre", inicio:"10/09/26", fim:"08/12/26", progresso:0 },
   { id:"C1", etapa:"EX", label:"Ciclo 01", sub:"Embasamento", inicio:"23/10/26", fim:"05/01/27", progresso:0 },
@@ -1043,7 +1043,7 @@ var acoesCROR = [
   { prazo:"06/11/26", item:"PACOTE DETALHAMENTO 06: ESQUADRIAS", desc:"", resp:"MANNZ", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"16/10/26", disc:"ARQUITETURA EXECUTIVA", entregavel:false },
   { prazo:"06/11/26", item:"PACOTE DETALHAMENTO 07: ALVENARIA OSSO", desc:"", resp:"MANNZ", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"16/10/26", disc:"ARQUITETURA EXECUTIVA", entregavel:false },
   { prazo:"13/04/27", item:"PACOTE DETALHAMENTO 07: ALVENARIA PAGINADA - APARTAMENTO TIPO", desc:"", resp:"MANNZ", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"09/03/27", disc:"ARQUITETURA EXECUTIVA", entregavel:false },
-  { prazo:"04/03/27", item:"ESTRUTURA - ARMAÇÃO", desc:"", resp:"PRECISÃO ESTRUTURAL", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"14/12/26", disc:"ESTRUTURAL", entregavel:false },
+  { prazo:"05/03/27", item:"ESTRUTURA - ARMAÇÃO", desc:"", resp:"PRECISÃO ESTRUTURAL", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"14/12/26", disc:"ESTRUTURAL", entregavel:false },
   { prazo:"15/01/27", item:"INTERIORES - DETALHAMENTO DE MARCENARIA", desc:"", resp:"OSVALDO SEGUNDO", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"24/11/26", disc:"INTERIORES", entregavel:false },
   { prazo:"01/03/27", item:"DETALHAMENTO DE ESQUADRIAS", desc:"", resp:"AUM PROJETOS", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"19/01/27", disc:"ESQUADRIAS", entregavel:false },
 ];
@@ -1055,6 +1055,7 @@ var acoes = acoesSemanal.concat(acoesCROR);
 const reunioes = [
   // ── Realizadas ─────────────────────────────────────────────────────────────────
   // ── Previstas ───────────────────────────────────────────────────────────────────
+  { data:"20/08/26", dataISO:"2026-08-20", tipo:"Compatibilização", situacao:"prevista",  assunto:"REUNIÃO MULTIDISCIPLINAR COMPATIBILIZAÇÃO AP-C2", decisoes:"" },
   { data:"28/08/26", dataISO:"2026-08-28", tipo:"Reunião", situacao:"prevista",  assunto:"RELATÓRIO/REUNIÃO - EFEITO PISTÃO, CASA DE MAQUINAS, POÇO (TODO EDIFÍCIO)", decisoes:"" },
   { data:"28/08/26", dataISO:"2026-08-28", tipo:"Reunião", situacao:"prevista",  assunto:"RELATÓRIO/REUNIÃO - CHURRASQUEIRAS (TODO EDIFÍCIO)", decisoes:"" },
   { data:"15/10/26", dataISO:"2026-10-15", tipo:"Compatibilização", situacao:"prevista",  assunto:"REUNIÃO MULTIDISCIPLINAR PARA INÍCIO DA ETAPA EX", decisoes:"" },
