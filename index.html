@@ -865,7 +865,7 @@ const disciplinas = [
 // ─────────────────────────────────────────────────────────────────────────────
 
 var acoesSemanal = [
-  // ── Controle de Ações (VRSCONTROLE_ACOES — 20/08/2026) ──────────────────────
+  // ── Controle de Ações (VRS-CONTROLE_ACOES — 23/08/2026) ──────────────────
   // Não mesclar com acoesCROR aqui — a junção é feita em var acoes abaixo.
   { prazo:"--", item:"Cronograma", desc:"Definição do cronograma geral e demais organizações", resp:"CK", criticidade:"Crítica", status:"Concluído", conclusao:"--", diasRest:"--", obs:"E-mail CK 24/04/2026: Sobre o cronograma, vamos trabalhar com o prevision. Estamos na fase de aquisição dos pacotes de incorporação, aviso quando a aquisição for concluída para nos alinharmos quanto aos cronogramas.", inicio:"15/04/26", disc:"CONSTRUTORA" },
   { prazo:"24/04/26", item:"Briefing Arquitetura", desc:"Preenchimento e envio do briefing a MANNZ, para start da transcrição arquitetura executiva", resp:"CK", criticidade:"Alta", status:"Concluído", conclusao:"24/04/26", diasRest:"--", obs:"Briefing enviado pela Mannz dia 15/04/2026", inicio:"15/04/26", disc:"CONSTRUTORA" },
@@ -875,8 +875,8 @@ var acoesSemanal = [
 ];
 
 var acoesCROR = [
-  // ── Tarefas do Project (CRO) ─────────────────────────────────────────────────────────
-  // Gerado em 20/08/2026. Atualizado pela automação CROR.
+  // ── Tarefas do cronograma (CROR) ────────────────────────────────────────
+  // Gerado em 23/08/2026. Atualizado pela automação CROR.
   // Não mesclar com acoesSemanal aqui — a junção é feita em var acoes abaixo.
   { prazo:"03/08/26", item:"EMISSÃO CONSULTA PRÉVIA (ANTEPROJETO 02)", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"21/07/26", disc:"ELÉTRICO E TELECOMUNICAÇÕES", entregavel:false },
   { prazo:"16/10/26", item:"ELABORAÇÃO ESTUDO DE PROTEÇÃO (PRÉ EXECUTIVO)", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"02/10/26", disc:"ELÉTRICO E TELECOMUNICAÇÕES", entregavel:false },
@@ -1047,8 +1047,8 @@ var acoesCROR = [
 var acoes = acoesSemanal.concat(acoesCROR);
 
 const reunioes = [
-  // ── Realizadas ─────────────────────────────────────────────────────────────────
-  // ── Previstas ───────────────────────────────────────────────────────────────────
+  // ── Realizadas ──────────────────────────────────────────────────────────
+  // ── Previstas ───────────────────────────────────────────────────────────
   { data:"20/08/26", dataISO:"2026-08-20", tipo:"Compatibilização", situacao:"prevista",  assunto:"REUNIÃO MULTIDISCIPLINAR COMPATIBILIZAÇÃO AP-C2", decisoes:"" },
   { data:"28/08/26", dataISO:"2026-08-28", tipo:"Reunião", situacao:"prevista",  assunto:"RELATÓRIO/REUNIÃO - EFEITO PISTÃO, CASA DE MAQUINAS, POÇO (TODO EDIFÍCIO)", decisoes:"" },
   { data:"28/08/26", dataISO:"2026-08-28", tipo:"Reunião", situacao:"prevista",  assunto:"RELATÓRIO/REUNIÃO - CHURRASQUEIRAS (TODO EDIFÍCIO)", decisoes:"" },
@@ -1067,7 +1067,7 @@ const projEnd   = new Date(Math.max.apply(null,_etDates));
 // com a data de atualização dos dados do CROR (campo max "Criado" do xlsx).
 // NÃO usar new Date() sem argumento — isso pega a data de hoje, não do CROR.
 const _CROR_DATA_REF = "2026-08-18"; // ← GAS: max campo Criado do CROR
-const _EXEC_DATA = "2026-08-20"; // ← GAS: data da última execução do script
+const _EXEC_DATA = "2026-08-23"; // ← GAS: data da última execução do script
 // Deriva o objeto Date a partir da string — sem timezone issues:
 const dataReferencia = (function(s) {
   var p = s.split("-");
@@ -2209,6 +2209,9 @@ var entregaveis = [
   { disc:"PCI", nome:"Preventivo", fase:"PE", itens:6, entregues:0, parciais:0 },
   { disc:"PCI", nome:"Preventivo", fase:"EX", itens:8, entregues:0, parciais:0 },
   { disc:"PCI", nome:"Preventivo", fase:"LO", itens:3, entregues:0, parciais:0 },
+  { disc:"SPDA", nome:"SPDA", fase:"PE", itens:6, entregues:4, parciais:0 },
+  { disc:"SPDA", nome:"SPDA", fase:"EX", itens:8, entregues:4, parciais:1 },
+  { disc:"SPDA", nome:"SPDA", fase:"LO", itens:3, entregues:0, parciais:0 },
 ];
 // ENTREGAVEIS_END
 
@@ -2813,6 +2816,29 @@ var entItens = {
     { item:"Pacote Entregue (PDF): Documentação final", status:"nao", obs:"" },
     { item:"Pacote Entregue (IFC): Modelo BIM (Espelho das plantas, em caso de divergêcia, será considerado o modelo como informação na compatibilização)", status:"nao", obs:"" },
   ],
+  "SPDA-PE": [
+    { item:"Cálculo de gerenciamento de risco", status:"sim", obs:"" },
+    { item:"Lançamento dos subsistemas de captação, descidas e aterramento", status:"sim", obs:"" },
+    { item:"Lançamento do subsistema de equipotencialização", status:"sim", obs:"" },
+    { item:"Ajustes / Respostas Construflow - Relatório de Compatibilização", status:"nao", obs:"ENTREGA OCORREU APÓS A COMPATIBILIZAÇÃO RC.R00 - AP - CICLO 2" },
+    { item:"Pacote Entregue (PDF/ DWG): Planta Baixa dos Pavimentos (sem cotas)", status:"sim", obs:"" },
+    { item:"Pacote Entregue (IFC): Modelo BIM (Espelho das plantas, em caso de divergêcia, será considerado o modelo como informação na compatibilização)", status:"nao", obs:"" },
+  ],
+  "SPDA-EX": [
+    { item:"Planta de todos os pavimentos", status:"sim", obs:"" },
+    { item:"Detalhes executivos", status:"sim", obs:"" },
+    { item:"Memoriais", status:"sim", obs:"" },
+    { item:"Esquemas Verticais", status:"sim", obs:"" },
+    { item:"Lista de materiais", status:"nao", obs:"" },
+    { item:"Pacote Entregue (PDF): Documentos", status:"parcial", obs:"FALTA LISTA DE MATERIAIS" },
+    { item:"Pacote Entregue (PDF/ DWG): Planta Baixa dos Pavimentos e Detalhes - COM COTAS", status:"nao", obs:"" },
+    { item:"Pacote Entregue (IFC): Modelo BIM (Espelho das plantas, em caso de divergêcia, será considerado o modelo como informação na compatibilização)", status:"nao", obs:"" },
+  ],
+  "SPDA-LO": [
+    { item:"Pacote Entregue (PDF/ DWG): Pranchas de todo o projeto compatibilizados e carimbados", status:"nao", obs:"" },
+    { item:"Pacote Entregue (PDF): Documentação final", status:"nao", obs:"" },
+    { item:"Pacote Entregue (IFC): Modelo BIM (Espelho das plantas, em caso de divergêcia, será considerado o modelo como informação na compatibilização)", status:"nao", obs:"" },
+  ],
 };
 // ENTITENS_END
 
@@ -3070,52 +3096,65 @@ var prioCorBadge  = {
 
 // RESPTODISC_START
 // Mapeamento responsável → código de disciplina (para botão Entregáveis).
-// Derivado de DISCIPLINASxRESPONSAVEL + DISC_TO_CODE. NÃO EDITAR.
+// Derivado de DISCIPLINASxRESPONSAVEL + abas do DOC-ENTREGAVEIS. NÃO EDITAR.
 var respToDisc = {
   "AMPLIE ENGENHARIA": "CLI",
   "AUM PROJETOS": null,
   "BORNSALES ENGENHARIA": "FUN",
   "CK": null,
-  "LE NÔTRE": "PAI",
-  "MANNZ": null,
-  "OSVALDO SEGUNDO": "INT",
+  "LE NÔTRE": null,
+  "MANNZ": "ARQ",
+  "OSVALDO SEGUNDO": null,
   "PRECISÃO ESTRUTURAL": "EST",
   "TOTE": null,
 };
 // RESPTODISC_END
 
 // DISCFULLTOCODE_START
-// Mapa nome canônico de disciplina → código de 3 letras (universo fechado).
-// Para ampliar, editar gerarDiscFullToCodeJS_ no GAS.
+// Mapa nome de disciplina → código, com aliases (PREFIX_DISC_MAP, canônico
+// do DISCIPLINASxRESPONSAVEL, nome exibido, nome longo da aba e o próprio
+// código) em forma natural e em CAIXA ALTA.
+// 100% derivado das abas do DOC-ENTREGAVEIS.xlsx — NÃO EDITAR. Para
+// incluir/remover uma disciplina, incluir/remover a aba na planilha.
 var discFullToCode = {
-  "ACÚSTICA": "ACU",
-  "ANCORAGEM": "ANC",
+  "AQC": "AQC",
   "AQUECIMENTO CENTRAL": "AQC",
+  "ARQ": "ARQ",
   "ARQUITETURA": "ARQ",
-  "ATP ESTRUTURA": "ATP",
-  "AUTOMAÇÃO": "AUT",
+  "ARQUITETURA EXECUTIVA": "ARQ",
+  "Aquecimento Central": "AQC",
+  "Arquitetura Executiva": "ARQ",
+  "CLI": "CLI",
   "CLIMATIZAÇÃO E EXAUSTÃO": "CLI",
-  "COMUNICAÇÃO VISUAL": "CVI",
-  "CONFORTO TÉRMICO-LUMÍNICO": "CTL",
-  "CONSTRUTORA": "CTR",
-  "COORDENAÇÃO E COMPATIBILIZAÇÃO": "COO",
-  "COZINHA INDUSTRIAL": "CZI",
-  "ELEVADORES": "ELV",
+  "Climatização e Exaustão": "CLI",
+  "DES": "DES",
+  "DESUMIDIFICAÇÃO": "DES",
+  "Desumidificação": "DES",
+  "ELE": "ELE",
+  "ELÉTRICO E TELECOMUNICAÇÃO": "ELE",
   "ELÉTRICO E TELECOMUNICAÇÕES": "ELE",
-  "ESQUADRIAS": "ESQ",
+  "EST": "EST",
+  "ESTRUTURA": "EST",
   "ESTRUTURAL": "EST",
+  "Elétrico e Telecomunicações": "ELE",
+  "Estrutural": "EST",
+  "FUN": "FUN",
+  "FUNDAÇÃO E CONTENÇÃO": "FUN",
+  "FUNDAÇÃO e CONTENÇÃO": "FUN",
   "FUNDAÇÕES E CONTENÇÕES": "FUN",
+  "Fundações e Contenções": "FUN",
+  "HID": "HID",
+  "HIDRÁULICO": "HID",
   "HIDRÁULICO E SANITÁRIO": "HID",
-  "ILUMINAÇÃO FACHADA": "ILU",
-  "IMPERMEABILIZAÇÃO": "IMP",
-  "INTERIORES": "INT",
-  "IRRIGAÇÃO": "IRR",
-  "PAISAGISMO": "PAI",
-  "PERSONALIZAÇÃO GARAGEM": "GAR",
+  "HIDRÁULICO, SANITÁRIO E DRENAGEM": "HID",
+  "Hidráulico": "HID",
+  "PCI": "PCI",
+  "PIS": "PIS",
   "PISCINA": "PIS",
   "PREVENTIVO": "PCI",
-  "PROJETO LEGAL": "LEG",
-  "SEGURANÇA PATRIMONIAL": "SEG",
+  "Piscina": "PIS",
+  "Preventivo": "PCI",
+  "SPDA": "SPDA",
 };
 // DISCFULLTOCODE_END
 
@@ -4388,7 +4427,7 @@ document.getElementById('ent-list') && renderEntregaveis();
 
 
 // DISCHASENTREGAVEIS_START
-// Disciplinas com pelo menos um entregável no AXIA601-DOC-ENTREGAVEIS.
+// Disciplinas com pelo menos um entregável no DOC-ENTREGAVEIS.
 // Derivado automaticamente de ent.totais pelo GAS — NÃO EDITAR.
 var discHasEntregaveis = {
   "AQC": true,
@@ -4401,6 +4440,7 @@ var discHasEntregaveis = {
   "HID": true,
   "PCI": true,
   "PIS": true,
+  "SPDA": true,
 };
 // DISCHASENTREGAVEIS_END
 
