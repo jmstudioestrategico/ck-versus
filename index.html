@@ -788,7 +788,7 @@ var respDisplayName = {
 // ETAPAS_START
 const etapas = [
   { id:"AP", label:"Anteprojeto (AP)", inicio:"15/05/26", fim:"27/08/26", progresso:100, cor:"#378ADD" },
-  { id:"PE", label:"Pré-Executivo (PE)", inicio:"28/08/26", fim:"08/12/26", progresso:0, cor:"#7F77DD" },
+  { id:"PE", label:"Pré-Executivo (PE)", inicio:"28/08/26", fim:"08/12/26", progresso:12, cor:"#7F77DD" },
   { id:"EX", label:"Executivo (EX)", inicio:"15/10/26", fim:"08/03/27", progresso:0, cor:"#BA7517" },
 ];
 // ETAPAS_END
@@ -797,7 +797,7 @@ const etapas = [
 const ciclos = [
   { id:"C1", etapa:"AP", label:"Ciclo 01", sub:"Arquitetura Mannz", inicio:"15/05/26", fim:"29/06/26", progresso:100 },
   { id:"C2", etapa:"AP", label:"Ciclo 02", sub:"Anteprojeto 02", inicio:"30/06/26", fim:"27/08/26", progresso:100 },
-  { id:"C1", etapa:"PE", label:"Ciclo 01", sub:"Embasamento", inicio:"28/08/26", fim:"29/10/26", progresso:0 },
+  { id:"C1", etapa:"PE", label:"Ciclo 01", sub:"Embasamento", inicio:"28/08/26", fim:"29/10/26", progresso:22 },
   { id:"C2", etapa:"PE", label:"Ciclo 02", sub:"Torre", inicio:"09/09/26", fim:"08/12/26", progresso:0 },
   { id:"C1", etapa:"EX", label:"Ciclo 01", sub:"Embasamento", inicio:"23/10/26", fim:"05/01/27", progresso:0 },
   { id:"C2", etapa:"EX", label:"Ciclo 02", sub:"Torre", inicio:"25/11/26", fim:"03/02/27", progresso:0 },
@@ -865,7 +865,7 @@ const disciplinas = [
 // ─────────────────────────────────────────────────────────────────────────────
 
 var acoesSemanal = [
-  // ── Controle de Ações (VRS-CONTROLE_ACOES — 03/09/2026) ──────────────────
+  // ── Controle de Ações (VRS-CONTROLE_ACOES — 23/09/2026) ──────────────────
   // Não mesclar com acoesCROR aqui — a junção é feita em var acoes abaixo.
   { prazo:"--", item:"Cronograma", desc:"Definição do cronograma geral e demais organizações", resp:"CK", criticidade:"Crítica", status:"Concluído", conclusao:"--", diasRest:"--", obs:"E-mail CK 24/04/2026: Sobre o cronograma, vamos trabalhar com o prevision. Estamos na fase de aquisição dos pacotes de incorporação, aviso quando a aquisição for concluída para nos alinharmos quanto aos cronogramas.", inicio:"15/04/26", disc:"CONSTRUTORA" },
   { prazo:"24/04/26", item:"Briefing Arquitetura", desc:"Preenchimento e envio do briefing a MANNZ, para start da transcrição arquitetura executiva", resp:"CK", criticidade:"Alta", status:"Concluído", conclusao:"24/04/26", diasRest:"--", obs:"Briefing enviado pela Mannz dia 15/04/2026", inicio:"15/04/26", disc:"CONSTRUTORA" },
@@ -876,7 +876,7 @@ var acoesSemanal = [
 
 var acoesCROR = [
   // ── Tarefas do cronograma (CROR) ────────────────────────────────────────
-  // Gerado em 03/09/2026. Atualizado pela automação CROR.
+  // Gerado em 23/09/2026. Atualizado pela automação CROR.
   // Não mesclar com acoesSemanal aqui — a junção é feita em var acoes abaixo.
   { prazo:"03/08/26", item:"EMISSÃO CONSULTA PRÉVIA (ANTEPROJETO 02)", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"21/07/26", disc:"ELÉTRICO E TELECOMUNICAÇÕES", entregavel:false },
   { prazo:"28/10/26", item:"ELABORAÇÃO ESTUDO DE PROTEÇÃO (PRÉ EXECUTIVO)", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"15/10/26", disc:"ELÉTRICO E TELECOMUNICAÇÕES", entregavel:false },
@@ -909,9 +909,9 @@ var acoesCROR = [
   { prazo:"30/07/26", item:"ARQ: AP-C2 - VERIFICAÇÃO ENTREGÁVEIS (TORRE)", desc:"", resp:"MANNZ", criticidade:"Media", status:"Concluido", conclusao:"30/07/26", diasRest:"--", obs:"", inicio:"30/07/26", disc:"COMPATIBILIZAÇÃO", entregavel:false },
   { prazo:"20/08/26", item:"ARQ: AP-C2 - COMPATIBILIZAÇÃO RC.R00 (TORRE )", desc:"", resp:"MANNZ", criticidade:"Media", status:"Concluido", conclusao:"20/08/26", diasRest:"--", obs:"", inicio:"31/07/26", disc:"COMPATIBILIZAÇÃO", entregavel:false },
   { prazo:"27/08/26", item:"ARQ: AP-C2 - ATUALIZAÇÃO ARQUITETURA CONFORME COMPATIBILIZAÇÃO E RELATÓRIO PRELIMINAR", desc:"", resp:"MANNZ", criticidade:"Media", status:"Concluido", conclusao:"27/08/26", diasRest:"--", obs:"", inicio:"21/08/26", disc:"COMPATIBILIZAÇÃO", entregavel:false },
-  { prazo:"09/09/26", item:"EST: PE-C1 - FORMAS E MODELO; ATUALIZAÇÃO PLANTA DE CARGA; (ENTREGÁVEIS ETAPA + ATENDIMENTO CFLOW)", desc:"", resp:"PRECISÃO ESTRUTURAL", criticidade:"Baixa", status:"Em andamento", conclusao:"-", diasRest:"--", obs:"", inicio:"28/08/26", disc:"ESTRUTURAL", entregavel:false },
-  { prazo:"18/09/26", item:"PAI: PE-C1 - PRANCHAS E ATUALIZAÇÃO BASE ARQUIETURA + ATENDIMENTO CFLOW", desc:"", resp:"LE NÔTRE", criticidade:"Baixa", status:"Em andamento", conclusao:"-", diasRest:"--", obs:"", inicio:"28/08/26", disc:"PAISAGISMO", entregavel:false },
-  { prazo:"18/09/26", item:"IRR: PE-C1 - PRANCHAS E ATUALIZAÇÃO BASE ARQUIETURA + ATENDIMENTO CFLOW", desc:"", resp:"LE NÔTRE", criticidade:"Baixa", status:"Em andamento", conclusao:"-", diasRest:"--", obs:"", inicio:"28/08/26", disc:"IRRIGAÇÃO", entregavel:false },
+  { prazo:"09/09/26", item:"EST: PE-C1 - FORMAS E MODELO; ATUALIZAÇÃO PLANTA DE CARGA; (ENTREGÁVEIS ETAPA + ATENDIMENTO CFLOW)", desc:"", resp:"PRECISÃO ESTRUTURAL", criticidade:"Baixa", status:"Concluido", conclusao:"09/09/26", diasRest:"--", obs:"", inicio:"28/08/26", disc:"ESTRUTURAL", entregavel:false },
+  { prazo:"18/09/26", item:"PAI: PE-C1 - PRANCHAS E ATUALIZAÇÃO BASE ARQUIETURA + ATENDIMENTO CFLOW", desc:"", resp:"LE NÔTRE", criticidade:"Baixa", status:"Concluido", conclusao:"18/09/26", diasRest:"--", obs:"", inicio:"28/08/26", disc:"PAISAGISMO", entregavel:false },
+  { prazo:"18/09/26", item:"IRR: PE-C1 - PRANCHAS E ATUALIZAÇÃO BASE ARQUIETURA + ATENDIMENTO CFLOW", desc:"", resp:"LE NÔTRE", criticidade:"Baixa", status:"Concluido", conclusao:"18/09/26", diasRest:"--", obs:"", inicio:"28/08/26", disc:"IRRIGAÇÃO", entregavel:false },
   { prazo:"21/09/26", item:"SAN: PE-C1 - PRANCHAS E MODELOS (EMBASAMENTO) - ENTREGÁVEIS ETAPA + ATENDIMENTO CFLOW", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Baixa", status:"Em andamento", conclusao:"-", diasRest:"--", obs:"", inicio:"28/08/26", disc:"SANITÁRIO", entregavel:false },
   { prazo:"21/09/26", item:"HID: PE-C1 - PRANCHAS E MODELOS (EMBASAMENTO) - ENTREGÁVEIS ETAPA + ATENDIMENTO CFLOW", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Baixa", status:"Em andamento", conclusao:"-", diasRest:"--", obs:"", inicio:"28/08/26", disc:"HIDRÁULICO", entregavel:false },
   { prazo:"21/09/26", item:"PCI: PE-C1 - PRANCHAS E MODELOS (EMBASAMENTO) - ENTREGÁVEIS ETAPA + ATENDIMENTO CFLOW", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Baixa", status:"Em andamento", conclusao:"-", diasRest:"--", obs:"", inicio:"28/08/26", disc:"PREVENTIVO", entregavel:false },
@@ -922,14 +922,14 @@ var acoesCROR = [
   { prazo:"21/09/26", item:"EXA: PE-C1 - PRANCHAS E MODELOS (EMBASAMENTO) - ENTREGÁVEIS ETAPA + ATENDIMENTO CFLOW", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Baixa", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"28/08/26", disc:"CLIMATIZAÇÃO E EXAUSTÃO", entregavel:false },
   { prazo:"21/09/26", item:"PIS: PE-C1 - PRANCHAS E MODELOS (EMBASAMENTO) - ENTREGÁVEIS ETAPA + ATENDIMENTO CFLOW", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Baixa", status:"Em andamento", conclusao:"-", diasRest:"--", obs:"", inicio:"28/08/26", disc:"PISCINA", entregavel:false },
   { prazo:"21/09/26", item:"PAS: PE-C1: EMISSÃO INICIAL FURAÇÃO TODAS AS DISCIPLINAS (EMBASAMENTO)", desc:"", resp:"", criticidade:"Baixa", status:"Em andamento", conclusao:"-", diasRest:"--", obs:"", inicio:"28/08/26", disc:"FURAÇÕES", entregavel:false },
-  { prazo:"17/09/26", item:"RELATÓRIO/REUNIÃO - EFEITO PISTÃO, CASA DE MAQUINAS, POÇO (TODO EDIFÍCIO)", desc:"", resp:"", criticidade:"Baixa", status:"Em andamento", conclusao:"-", diasRest:"--", obs:"", inicio:"28/08/26", disc:"CONSULTORIA ELEVADORES", entregavel:false },
+  { prazo:"17/09/26", item:"RELATÓRIO/REUNIÃO - EFEITO PISTÃO, CASA DE MAQUINAS, POÇO (TODO EDIFÍCIO)", desc:"", resp:"", criticidade:"Baixa", status:"Concluido", conclusao:"17/09/26", diasRest:"--", obs:"", inicio:"28/08/26", disc:"CONSULTORIA ELEVADORES", entregavel:false },
   { prazo:"17/09/26", item:"RELATÓRIO/REUNIÃO - CHURRASQUEIRAS (TODO EDIFÍCIO)", desc:"", resp:"", criticidade:"Baixa", status:"Em andamento", conclusao:"-", diasRest:"--", obs:"", inicio:"28/08/26", disc:"CONSULTORIA CHURRASQUEIRA", entregavel:false },
-  { prazo:"11/09/26", item:"INT: PE-C1 - PRANCHAS E MODELO (EMBASAMENTO)", desc:"", resp:"OSVALDO SEGUNDO", criticidade:"Baixa", status:"Em andamento", conclusao:"-", diasRest:"--", obs:"", inicio:"28/08/26", disc:"INTERIORES", entregavel:false },
-  { prazo:"18/09/26", item:"CK: ANÁLISE INTERIORES CK (EMBASAMENTO)", desc:"", resp:"CK", criticidade:"Baixa", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"14/09/26", disc:"CONSTRUTORA", entregavel:false },
+  { prazo:"11/09/26", item:"INT: PE-C1 - PRANCHAS E MODELO (EMBASAMENTO)", desc:"", resp:"OSVALDO SEGUNDO", criticidade:"Baixa", status:"Concluido", conclusao:"11/09/26", diasRest:"--", obs:"", inicio:"28/08/26", disc:"INTERIORES", entregavel:false },
+  { prazo:"18/09/26", item:"CK: ANÁLISE INTERIORES CK (EMBASAMENTO)", desc:"", resp:"CK", criticidade:"Baixa", status:"Concluido", conclusao:"18/09/26", diasRest:"--", obs:"", inicio:"14/09/26", disc:"CONSTRUTORA", entregavel:false },
   { prazo:"23/09/26", item:"FUN: PE-C1 - PRANCHAS", desc:"", resp:"BORNSALES ENGENHARIA", criticidade:"Baixa", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"10/09/26", disc:"FUNDAÇÕES E CONTENÇÕES", entregavel:false },
   { prazo:"28/09/26", item:"EST: PE-C1 - REFERENTE A EMISSÃO INICIAL FURAÇÃO - 2D (EMBASAMENTO)", desc:"", resp:"PRECISÃO ESTRUTURAL", criticidade:"Baixa", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"22/09/26", disc:"ESTRUTURAL", entregavel:false },
-  { prazo:"23/09/26", item:"ARQ: PE-C1 - VERIFICAÇÃO ENTREGÁVEIS", desc:"", resp:"MANNZ", criticidade:"Baixa", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"23/09/26", disc:"COMPATIBILIZAÇÃO", entregavel:false },
-  { prazo:"15/10/26", item:"ARQ: PE-C1 - RELATÓRIO DE COMPATIBILIZAÇÃO RC.R01 + FURAÇÃO (INSTALAÇÕES)", desc:"", resp:"MANNZ", criticidade:"Baixa", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"24/09/26", disc:"COMPATIBILIZAÇÃO", entregavel:false },
+  { prazo:"23/09/26", item:"ARQ: PE-C1 - VERIFICAÇÃO ENTREGÁVEIS", desc:"", resp:"MANNZ", criticidade:"Baixa", status:"Concluido", conclusao:"23/09/26", diasRest:"--", obs:"", inicio:"23/09/26", disc:"COMPATIBILIZAÇÃO", entregavel:false },
+  { prazo:"15/10/26", item:"ARQ: PE-C1 - RELATÓRIO DE COMPATIBILIZAÇÃO RC.R01 + FURAÇÃO (INSTALAÇÕES)", desc:"", resp:"MANNZ", criticidade:"Baixa", status:"Em andamento", conclusao:"-", diasRest:"--", obs:"", inicio:"24/09/26", disc:"COMPATIBILIZAÇÃO", entregavel:false },
   { prazo:"22/10/26", item:"ARQ: PE-C1 - ATUALIZAÇÃO ARQUITETURA CONFORME COMPATIBILIZAÇÃO E RELATÓRIO ESQUADRIAS", desc:"", resp:"MANNZ", criticidade:"Baixa", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"16/10/26", disc:"COMPATIBILIZAÇÃO", entregavel:false },
   { prazo:"28/09/26", item:"CK: REFERENTE A ENTREGA DOS COMPLEMENTARES PE-C1", desc:"", resp:"CK", criticidade:"Baixa", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"22/09/26", disc:"CONSTRUTORA", entregavel:false },
   { prazo:"29/10/26", item:"CK: REFERENTE A ENTREGA DA ARQUITETURA REVISADA PE-C1", desc:"", resp:"CK", criticidade:"Baixa", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"23/10/26", disc:"CONSTRUTORA", entregavel:false },
@@ -946,7 +946,7 @@ var acoesCROR = [
   { prazo:"22/10/26", item:"PE-C1: INSTALAÇÕES - Atualização planta de furação conforme compatibilização (EMBASAMENTO)", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Baixa", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"16/10/26", disc:"SPDA", entregavel:false },
   { prazo:"22/10/26", item:"PE-C1: INSTALAÇÕES - Atualização planta de furação conforme compatibilização (EMBASAMENTO)", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Baixa", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"16/10/26", disc:"PISCINA", entregavel:false },
   { prazo:"29/10/26", item:"PE-C1: ESTRUTURA - Validação final 2D EMBASAMENTO + FORMAS E MODELO COM FUROS TÉRREO E G1", desc:"", resp:"PRECISÃO ESTRUTURAL", criticidade:"Baixa", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"23/10/26", disc:"ESTRUTURAL", entregavel:false },
-  { prazo:"21/09/26", item:"EST: PE-C2 - FORMAS E MODELO; ATUALIZAÇÃO PLANTA DE CARGA; (ENTREGÁVEIS ETAPA + ATENDIMENTO CFLOW)", desc:"", resp:"PRECISÃO ESTRUTURAL", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"10/09/26", disc:"ESTRUTURAL", entregavel:false },
+  { prazo:"21/09/26", item:"EST: PE-C2 - FORMAS E MODELO; ATUALIZAÇÃO PLANTA DE CARGA; (ENTREGÁVEIS ETAPA + ATENDIMENTO CFLOW)", desc:"", resp:"PRECISÃO ESTRUTURAL", criticidade:"Media", status:"Em andamento", conclusao:"-", diasRest:"--", obs:"", inicio:"10/09/26", disc:"ESTRUTURAL", entregavel:false },
   { prazo:"14/10/26", item:"SAN: PE-C2 - PRANCHAS E MODELOS (TORRE) - ENTREGÁVEIS ETAPA + ATENDIMENTO CFLOW", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"21/09/26", disc:"SANITÁRIO", entregavel:false },
   { prazo:"14/10/26", item:"HID: PE-C2 - PRANCHAS E MODELOS (TORRE) - ENTREGÁVEIS ETAPA + ATENDIMENTO CFLOW", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"21/09/26", disc:"HIDRÁULICO", entregavel:false },
   { prazo:"14/10/26", item:"PCI: PE-C2 - PRANCHAS E MODELOS (TORRE) - ENTREGÁVEIS ETAPA + ATENDIMENTO CFLOW", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"21/09/26", disc:"PREVENTIVO", entregavel:false },
@@ -1037,7 +1037,13 @@ var acoesCROR = [
   { prazo:"06/11/26", item:"PACOTE DETALHAMENTO 07: ALVENARIA OSSO", desc:"", resp:"MANNZ", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"16/10/26", disc:"ARQUITETURA EXECUTIVA", entregavel:false },
   { prazo:"13/04/27", item:"PACOTE DETALHAMENTO 07: ALVENARIA PAGINADA - APARTAMENTO TIPO", desc:"", resp:"MANNZ", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"09/03/27", disc:"ARQUITETURA EXECUTIVA", entregavel:false },
   { prazo:"04/03/27", item:"ESTRUTURA - ARMAÇÃO", desc:"", resp:"PRECISÃO ESTRUTURAL", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"14/12/26", disc:"ESTRUTURAL", entregavel:false },
-  { prazo:"15/01/27", item:"INTERIORES - DETALHAMENTO DE MARCENARIA", desc:"", resp:"OSVALDO SEGUNDO", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"24/11/26", disc:"INTERIORES", entregavel:false },
+  { prazo:"15/01/27", item:"DETALHAMENTO DE MARCENARIA, SERRALHERIA E BASES METÁLICAS", desc:"", resp:"OSVALDO SEGUNDO", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"24/11/26", disc:"INTERIORES", entregavel:false },
+  { prazo:"15/01/27", item:"DETALHAMENTO DE SUPERFÍCIE DE BANCADA", desc:"", resp:"OSVALDO SEGUNDO", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"24/11/26", disc:"INTERIORES", entregavel:false },
+  { prazo:"15/01/27", item:"ESPECIFICAÇÃO DE LOUÇAS E METAIS", desc:"", resp:"OSVALDO SEGUNDO", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"24/11/26", disc:"INTERIORES", entregavel:false },
+  { prazo:"15/01/27", item:"DETALHAMENTO DO LUMINOTÉCNICO (LUMINÁRIAS EMBUTIDAS, PENDENTES, DECORATIVAS)", desc:"", resp:"OSVALDO SEGUNDO", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"24/11/26", disc:"INTERIORES", entregavel:false },
+  { prazo:"15/01/27", item:"ESPECIFICAÇÃO DE MÓVEIS SOLTOS (SOFÁS, POLTRONAS, MESAS, CADEIRAS E BANQUETAS)", desc:"", resp:"OSVALDO SEGUNDO", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"24/11/26", disc:"INTERIORES", entregavel:false },
+  { prazo:"15/01/27", item:"ESPECIFICAÇÃO DE CORTINAS E PERSIANAS", desc:"", resp:"OSVALDO SEGUNDO", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"24/11/26", disc:"INTERIORES", entregavel:false },
+  { prazo:"15/01/27", item:"PLANILHA COM ESTIMATIVA DE CUSTOS", desc:"", resp:"OSVALDO SEGUNDO", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"24/11/26", disc:"INTERIORES", entregavel:false },
   { prazo:"01/03/27", item:"DETALHAMENTO DE ESQUADRIAS", desc:"", resp:"AUM PROJETOS", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"19/01/27", disc:"ESQUADRIAS", entregavel:false },
 ];
 
@@ -1048,8 +1054,8 @@ var acoes = acoesSemanal.concat(acoesCROR);
 const reunioes = [
   // ── Realizadas ──────────────────────────────────────────────────────────
   { data:"20/08/26", dataISO:"2026-08-20", tipo:"Compatibilização", situacao:"realizada", assunto:"REUNIÃO MULTIDISCIPLINAR COMPATIBILIZAÇÃO AP-C2", decisoes:"" },
+  { data:"28/08/26", dataISO:"2026-08-28", tipo:"Reunião", situacao:"realizada", assunto:"RELATÓRIO/REUNIÃO - EFEITO PISTÃO, CASA DE MAQUINAS, POÇO (TODO EDIFÍCIO)", decisoes:"" },
   // ── Previstas ───────────────────────────────────────────────────────────
-  { data:"28/08/26", dataISO:"2026-08-28", tipo:"Reunião", situacao:"prevista",  assunto:"RELATÓRIO/REUNIÃO - EFEITO PISTÃO, CASA DE MAQUINAS, POÇO (TODO EDIFÍCIO)", decisoes:"" },
   { data:"28/08/26", dataISO:"2026-08-28", tipo:"Reunião", situacao:"prevista",  assunto:"RELATÓRIO/REUNIÃO - CHURRASQUEIRAS (TODO EDIFÍCIO)", decisoes:"" },
   { data:"15/10/26", dataISO:"2026-10-15", tipo:"Compatibilização", situacao:"prevista",  assunto:"REUNIÃO MULTIDISCIPLINAR PARA INÍCIO DA ETAPA EX", decisoes:"" },
   { data:"08/03/27", dataISO:"2027-03-08", tipo:"Compatibilização", situacao:"prevista",  assunto:"REUNIÃO MULTIDISCIPLINAR FECHAMENTO", decisoes:"" },
@@ -1065,8 +1071,8 @@ const projEnd   = new Date(Math.max.apply(null,_etDates));
 // AUTOMAÇÃO: substituir APENAS o valor da string abaixo (formato YYYY-MM-DD)
 // com a data de atualização dos dados do CROR (campo max "Criado" do xlsx).
 // NÃO usar new Date() sem argumento — isso pega a data de hoje, não do CROR.
-const _CROR_DATA_REF = "2026-09-03"; // ← GAS: max campo Criado do CROR
-const _EXEC_DATA = "2026-09-03"; // ← GAS: data da última execução do script
+const _CROR_DATA_REF = "2026-09-23"; // ← GAS: max campo Criado do CROR
+const _EXEC_DATA = "2026-09-23"; // ← GAS: data da última execução do script
 // Deriva o objeto Date a partir da string — sem timezone issues:
 const dataReferencia = (function(s) {
   var p = s.split("-");
@@ -1116,7 +1122,7 @@ const _fim90ISO = window._fim90ISO;
 const _fim90    = window._fim90;
 const hoje           = dataReferencia;
 // PERCGERAL_START
-const percGeral = 22;
+const percGeral = 27;
 // PERCGERAL_END
 const prioLabel = { critica:"Critica", alta:"Alta", media:"Media" };
 const stdLabel  = { andamento:"Em andamento", futuro:"Futuro", resolvido:"Concluido" };
@@ -2170,8 +2176,8 @@ var entregaveis = [
   { disc:"ARQ", nome:"Arquitetura Executiva", fase:"EX", itens:10, entregues:0, parciais:0 },
   { disc:"ARQ", nome:"Arquitetura Executiva", fase:"LO", itens:2, entregues:0, parciais:0 },
   { disc:"CLI", nome:"Climatização e Exaustão", fase:"EP", itens:10, entregues:9, parciais:0 },
-  { disc:"CLI", nome:"Climatização e Exaustão", fase:"AP", itens:23, entregues:22, parciais:1 },
-  { disc:"CLI", nome:"Climatização e Exaustão", fase:"PE", itens:6, entregues:0, parciais:0 },
+  { disc:"CLI", nome:"Climatização e Exaustão", fase:"AP", itens:23, entregues:23, parciais:0 },
+  { disc:"CLI", nome:"Climatização e Exaustão", fase:"PE", itens:6, entregues:0, parciais:6 },
   { disc:"CLI", nome:"Climatização e Exaustão", fase:"EX", itens:7, entregues:0, parciais:0 },
   { disc:"CLI", nome:"Climatização e Exaustão", fase:"LO", itens:3, entregues:0, parciais:0 },
   { disc:"DES", nome:"Desumidificação", fase:"EP", itens:6, entregues:0, parciais:0 },
@@ -2180,13 +2186,13 @@ var entregaveis = [
   { disc:"DES", nome:"Desumidificação", fase:"EX", itens:9, entregues:0, parciais:0 },
   { disc:"DES", nome:"Desumidificação", fase:"LO", itens:3, entregues:0, parciais:0 },
   { disc:"ELE", nome:"Elétrico e Telecomunicações", fase:"EP", itens:14, entregues:13, parciais:0 },
-  { disc:"ELE", nome:"Elétrico e Telecomunicações", fase:"AP", itens:23, entregues:16, parciais:5 },
-  { disc:"ELE", nome:"Elétrico e Telecomunicações", fase:"PE", itens:7, entregues:0, parciais:0 },
+  { disc:"ELE", nome:"Elétrico e Telecomunicações", fase:"AP", itens:23, entregues:17, parciais:5 },
+  { disc:"ELE", nome:"Elétrico e Telecomunicações", fase:"PE", itens:7, entregues:0, parciais:6 },
   { disc:"ELE", nome:"Elétrico e Telecomunicações", fase:"EX", itens:8, entregues:0, parciais:0 },
   { disc:"ELE", nome:"Elétrico e Telecomunicações", fase:"LO", itens:3, entregues:0, parciais:0 },
   { disc:"EST", nome:"Estrutural", fase:"EP", itens:8, entregues:7, parciais:0 },
-  { disc:"EST", nome:"Estrutural", fase:"AP", itens:18, entregues:8, parciais:1 },
-  { disc:"EST", nome:"Estrutural", fase:"PE", itens:17, entregues:0, parciais:0 },
+  { disc:"EST", nome:"Estrutural", fase:"AP", itens:18, entregues:9, parciais:0 },
+  { disc:"EST", nome:"Estrutural", fase:"PE", itens:17, entregues:9, parciais:2 },
   { disc:"EST", nome:"Estrutural", fase:"EX", itens:12, entregues:0, parciais:0 },
   { disc:"EST", nome:"Estrutural", fase:"LO", itens:3, entregues:0, parciais:0 },
   { disc:"FUN", nome:"Fundações e Contenções", fase:"EP", itens:8, entregues:0, parciais:0 },
@@ -2194,18 +2200,18 @@ var entregaveis = [
   { disc:"FUN", nome:"Fundações e Contenções", fase:"EX", itens:11, entregues:0, parciais:0 },
   { disc:"FUN", nome:"Fundações e Contenções", fase:"LO", itens:3, entregues:0, parciais:0 },
   { disc:"HID", nome:"Hidráulico", fase:"EP", itens:20, entregues:18, parciais:0 },
-  { disc:"HID", nome:"Hidráulico", fase:"AP", itens:27, entregues:24, parciais:3 },
-  { disc:"HID", nome:"Hidráulico", fase:"PE", itens:6, entregues:0, parciais:0 },
+  { disc:"HID", nome:"Hidráulico", fase:"AP", itens:27, entregues:25, parciais:2 },
+  { disc:"HID", nome:"Hidráulico", fase:"PE", itens:6, entregues:0, parciais:5 },
   { disc:"HID", nome:"Hidráulico", fase:"EX", itens:12, entregues:0, parciais:0 },
   { disc:"HID", nome:"Hidráulico", fase:"LO", itens:3, entregues:0, parciais:0 },
   { disc:"PIS", nome:"Piscina", fase:"EP", itens:5, entregues:5, parciais:0 },
   { disc:"PIS", nome:"Piscina", fase:"AP", itens:21, entregues:21, parciais:0 },
-  { disc:"PIS", nome:"Piscina", fase:"PE", itens:6, entregues:0, parciais:0 },
+  { disc:"PIS", nome:"Piscina", fase:"PE", itens:6, entregues:5, parciais:0 },
   { disc:"PIS", nome:"Piscina", fase:"EX", itens:8, entregues:0, parciais:0 },
   { disc:"PIS", nome:"Piscina", fase:"LO", itens:3, entregues:0, parciais:0 },
-  { disc:"PCI", nome:"Preventivo", fase:"EP", itens:18, entregues:16, parciais:2 },
-  { disc:"PCI", nome:"Preventivo", fase:"AP", itens:21, entregues:19, parciais:1 },
-  { disc:"PCI", nome:"Preventivo", fase:"PE", itens:6, entregues:0, parciais:0 },
+  { disc:"PCI", nome:"Preventivo", fase:"EP", itens:18, entregues:18, parciais:0 },
+  { disc:"PCI", nome:"Preventivo", fase:"AP", itens:21, entregues:19, parciais:2 },
+  { disc:"PCI", nome:"Preventivo", fase:"PE", itens:6, entregues:0, parciais:5 },
   { disc:"PCI", nome:"Preventivo", fase:"EX", itens:8, entregues:0, parciais:0 },
   { disc:"PCI", nome:"Preventivo", fase:"LO", itens:3, entregues:0, parciais:0 },
   { disc:"SPDA", nome:"SPDA", fase:"PE", itens:6, entregues:4, parciais:0 },
@@ -2362,7 +2368,7 @@ var entItens = {
     { item:"C2 - Ajustes conforme solicitações da Compatibilização (Construflow)", status:"sim", obs:"AJUSTES DE ANTES DO USO DO CONTRUFLOW" },
     { item:"C2 - Lançamento pontos solicitados por interiores", status:"sim", obs:"" },
     { item:"C2 - Consolidação dos cálculos, seleção de equipamentos", status:"sim", obs:"" },
-    { item:"C2 - Localização e dimensões das casas de máquinas", status:"parcial", obs:"FALTA VALIDAÇÃO DA ÁREA TÉCNICA DA SALA 3 - ITEM ALTERADO NA ÚLTIMA ARQUITETURA" },
+    { item:"C2 - Localização e dimensões das casas de máquinas", status:"sim", obs:"ATENDIDO NO PE-CICLO 01" },
     { item:"C2 - Dimensionamento de toda a rede de dutos, distribuição de ar, rede hidráulica e frigorígena", status:"sim", obs:"" },
     { item:"C2 - Posicionamento de grelhas e difusores", status:"sim", obs:"" },
     { item:"C2 - Emissão plantas prévias de furação / cubetas", status:"sim", obs:"" },
@@ -2372,12 +2378,12 @@ var entItens = {
     { item:"C2 - Pacote Entregue (IFC): Modelo BIM (Espelho das plantas, em caso de divergêcia, será considerado o modelo como informação na compatibilização)", status:"sim", obs:"" },
   ],
   "CLI-PE": [
-    { item:"Ajustes conforme solicitações da Compatibilização (Construflow)", status:"nao", obs:"" },
-    { item:"Necessidades a serem supridas pela infraestrutura das instalações prediais de energia elétrica, gás, água e esgoto", status:"nao", obs:"" },
-    { item:"Atualização plantas de furação (conforme atualização de projeto e comentários da analise de estrutura)", status:"nao", obs:"" },
-    { item:"Ajustes / Respostas Construflow - Relatório de Compatibilização", status:"nao", obs:"" },
-    { item:"Pacote Entregue (PDF/ DWG): Planta Baixa dos Pavimentos (sem cotas)", status:"nao", obs:"" },
-    { item:"Pacote Entregue (IFC): Modelo BIM (Espelho das plantas, em caso de divergêcia, será considerado o modelo como informação na compatibilização)", status:"nao", obs:"" },
+    { item:"Ajustes conforme solicitações da Compatibilização (Construflow)", status:"parcial", obs:"ATENDIDO NO PE CICLO 02 - EMBASAMENTO AGUARDANDO ENTREGA DA TORRE PARA CONCLUSÃO" },
+    { item:"Necessidades a serem supridas pela infraestrutura das instalações prediais de energia elétrica, gás, água e esgoto", status:"parcial", obs:"ATENDIDO NO PE CICLO 02 - EMBASAMENTO AGUARDANDO ENTREGA DA TORRE PARA CONCLUSÃO" },
+    { item:"Atualização plantas de furação (conforme atualização de projeto e comentários da analise de estrutura)", status:"parcial", obs:"ATENDIDO NO PE CICLO 02 - EMBASAMENTO AGUARDANDO ENTREGA DA TORRE PARA CONCLUSÃO" },
+    { item:"Ajustes / Respostas Construflow - Relatório de Compatibilização", status:"parcial", obs:"ATENDIDO NO PE CICLO 02 - EMBASAMENTO AGUARDANDO ENTREGA DA TORRE PARA CONCLUSÃO" },
+    { item:"Pacote Entregue (PDF/ DWG): Planta Baixa dos Pavimentos (sem cotas)", status:"parcial", obs:"ATENDIDO NO PE CICLO 02 - EMBASAMENTO AGUARDANDO ENTREGA DA TORRE PARA CONCLUSÃO" },
+    { item:"Pacote Entregue (IFC): Modelo BIM (Espelho das plantas, em caso de divergêcia, será considerado o modelo como informação na compatibilização)", status:"parcial", obs:"ATENDIDO NO PE CICLO 02 - EMBASAMENTO AGUARDANDO ENTREGA DA TORRE PARA CONCLUSÃO" },
   ],
   "CLI-EX": [
     { item:"Planta de todos os pavimentos", status:"nao", obs:"" },
@@ -2469,34 +2475,34 @@ var entItens = {
     { item:"C1 - Posição dos quadros de medição, subestação (se houver) e gerador (se houver)", status:"sim", obs:"" },
     { item:"C1 - Lançamento das prumadas com caixas de passagem e eletrodutos / eletrocalhas", status:"sim", obs:"" },
     { item:"C1 - Posição da central de monitoramento", status:"sim", obs:"" },
-    { item:"C1 - Lançamento de pontos - TUG's, TUE's, Iluminação, Comunicação, Monitoramento", status:"parcial", obs:"PONTOS DAS ÁREAS COMUNS EM REVISÃO PELA CK / INTERIORES" },
-    { item:"C1 - Distribuição de pontos Telecom em todos os pavimentos (Dados, Voz, Imagem, Controle de Acesso, Som)", status:"parcial", obs:"PONTOS DAS ÁREAS COMUNS EM REVISÃO PELA CK / INTERIORES" },
-    { item:"C1 - Indicação de necessidades de enchimentos, incompatibilidades, duvidas e indefinições", status:"parcial", obs:"ÁREAS COMUNS EM REVISÃO PELA CK / INTERIORES" },
+    { item:"C1 - Lançamento de pontos - TUG's, TUE's, Iluminação, Comunicação, Monitoramento", status:"parcial", obs:"MATERIAL DE DEFINIÇÕES CK NÃO ABSORVIDO NO PE-CICLO 01" },
+    { item:"C1 - Distribuição de pontos Telecom em todos os pavimentos (Dados, Voz, Imagem, Controle de Acesso, Som)", status:"parcial", obs:"MATERIAL DE DEFINIÇÕES CK NÃO ABSORVIDO NO PE-CICLO 01" },
+    { item:"C1 - Indicação de necessidades de enchimentos, incompatibilidades, duvidas e indefinições", status:"parcial", obs:"MATERIAL DE DEFINIÇÕES CK NÃO ABSORVIDO NO PE-CICLO 01" },
     { item:"C1 - Ajustes / Respostas Construflow - Relatório de Compatibilização", status:"sim", obs:"" },
     { item:"C1 - Pacote Entregue (PDF/ DWG): Planta Baixa dos Pavimentos (sem cotas)", status:"sim", obs:"" },
     { item:"C1 - Pacote Entregue (IFC): Modelo BIM (Espelho das plantas, em caso de divergêcia, será considerado o modelo como informação na compatibilização)", status:"sim", obs:"" },
     { item:"C2 - Ajustes conforme solicitações da Compatibilização (Construflow)", status:"sim", obs:"AJUSTES DE ANTES DO USO DO CONTRUFLOW" },
-    { item:"C2 - Lançamento pontos e eletrodutos solicitados por interiores, paisagismo", status:"parcial", obs:"PONTOS DAS ÁREAS COMUNS EM REVISÃO PELA CK / INTERIORES" },
+    { item:"C2 - Lançamento pontos e eletrodutos solicitados por interiores, paisagismo", status:"parcial", obs:"MATERIAL DE DEFINIÇÕES CK NÃO ABSORVIDO NO PE-CICLO 01" },
     { item:"C2 - Lançamento de eletrodutos conforme pontos aprovados (lajes/paredes/pisos)", status:"sim", obs:"" },
     { item:"C2 - Definições de circuitos elétricos aos pontos", status:"sim", obs:"" },
-    { item:"C2 - Lançamento dos pontos elétricos de ar condicionado e ventilação/exaustão", status:"parcial", obs:"FALTAM OS PONTOS DE CLIMATIZAÇÃO" },
+    { item:"C2 - Lançamento dos pontos elétricos de ar condicionado e ventilação/exaustão", status:"parcial", obs:"PONTOS DE CLIMATIZAÇÃO ATENDIDOS NO PE CICLO 01 DO EMBASAMENTO FALTAM OS PONTOS DA EXAUSTÃO" },
     { item:"C2 - Indicação de necessidades de enchimentos, incompatibilidades, duvidas e indefinições", status:"sim", obs:"" },
     { item:"C2 - Validação dos tamanhos dos quadros elétricos conforme Layout de Circuitos", status:"sim", obs:"" },
     { item:"C2 - Emissão plantas de furação/cubetas", status:"sim", obs:"" },
     { item:"C2 - Emissão dos Esquemas Verticais dos projetos Elétricos / Telecomunicações / Preventivo", status:"nao", obs:"" },
-    { item:"C2 - Emissão do Projeto de SPDA Estrutural", status:"nao", obs:"" },
+    { item:"C2 - Emissão do Projeto de SPDA Estrutural", status:"sim", obs:"EMITIDO APÓS O FECHAMENTO DO AP CICLO 02" },
     { item:"C2 - Ajustes / Respostas Construflow - Relatório de Compatibilização", status:"sim", obs:"" },
     { item:"C2 - Pacote Entregue (PDF/ DWG): Planta Baixa dos Pavimentos (sem cotas)", status:"sim", obs:"" },
     { item:"C2 - Pacote Entregue (IFC): Modelo BIM (Espelho das plantas, em caso de divergêcia, será considerado o modelo como informação na compatibilização)", status:"sim", obs:"" },
   ],
   "ELE-PE": [
-    { item:"Ajustes conforme solicitações da Compatibilização (Construflow)", status:"nao", obs:"" },
-    { item:"Planta baixa de todos os pavimentos com fiação elétrica", status:"nao", obs:"" },
+    { item:"Ajustes conforme solicitações da Compatibilização (Construflow)", status:"parcial", obs:"ATENDIDO NO PE CICLO 02 - EMBASAMENTO AGUARDANDO ENTREGA DA TORRE PARA CONCLUSÃO" },
+    { item:"Planta baixa de todos os pavimentos com fiação elétrica", status:"parcial", obs:"PLANTAS COM ELETRODUTOS AGUARDANDO ENTREGA DA TORRE PARA CONCLUSÃO" },
     { item:"Detalhe Shaft hall", status:"nao", obs:"" },
-    { item:"Atualização plantas de furação (conforme atualização de projeto e comentários da analise de estrutura)", status:"nao", obs:"" },
-    { item:"Ajustes / Respostas Construflow - Relatório de Compatibilização", status:"nao", obs:"" },
-    { item:"Pacote Entregue (PDF/ DWG): Planta Baixa dos Pavimentos (sem cotas)", status:"nao", obs:"" },
-    { item:"Pacote Entregue (IFC): Modelo BIM (Espelho das plantas, em caso de divergêcia, será considerado o modelo como informação na compatibilização)", status:"nao", obs:"" },
+    { item:"Atualização plantas de furação (conforme atualização de projeto e comentários da analise de estrutura)", status:"parcial", obs:"ATENDIDO NO PE CICLO 02 - EMBASAMENTO AGUARDANDO ENTREGA DA TORRE PARA CONCLUSÃO" },
+    { item:"Ajustes / Respostas Construflow - Relatório de Compatibilização", status:"parcial", obs:"ATENDIDO NO PE CICLO 02 - EMBASAMENTO AGUARDANDO ENTREGA DA TORRE PARA CONCLUSÃO" },
+    { item:"Pacote Entregue (PDF/ DWG): Planta Baixa dos Pavimentos (sem cotas)", status:"parcial", obs:"ATENDIDO NO PE CICLO 02 - EMBASAMENTO AGUARDANDO ENTREGA DA TORRE PARA CONCLUSÃO" },
+    { item:"Pacote Entregue (IFC): Modelo BIM (Espelho das plantas, em caso de divergêcia, será considerado o modelo como informação na compatibilização)", status:"parcial", obs:"ATENDIDO NO PE CICLO 02 - EMBASAMENTO AGUARDANDO ENTREGA DA TORRE PARA CONCLUSÃO" },
   ],
   "ELE-EX": [
     { item:"Detalhes executivos convenientes a instalação", status:"nao", obs:"" },
@@ -2535,7 +2541,7 @@ var entItens = {
     { item:"Estimativa de quantitativo de aço, concreto e formas (todos os pavimentos)", status:"nao", obs:"" },
     { item:"Análise Furações (Validações e Sugestões de alteração)", status:"nao", obs:"" },
     { item:"Indicação de Eixos", status:"nao", obs:"" },
-    { item:"Indicação de vigas invertidas nas garagens (se for o caso)", status:"parcial", obs:"SOLICITADO EM APONTAMENTO AS VIGAS EM FALTA" },
+    { item:"Indicação de vigas invertidas nas garagens (se for o caso)", status:"sim", obs:"" },
     { item:"Escadas", status:"nao", obs:"" },
     { item:"Rampas e vigas de apoio", status:"nao", obs:"" },
     { item:"Ajustes / Respostas Construflow - Relatório de Compatibilização", status:"sim", obs:"" },
@@ -2544,23 +2550,23 @@ var entItens = {
     { item:"Pacote Entregue (IFC): Modelo BIM (Espelho das Formas, em caso de divergêcia, será considerado o modelo como informação na compatibilização)", status:"sim", obs:"" },
   ],
   "EST-PE": [
-    { item:"Ajustes conforme solicitações da Compatibilização (Construflow)", status:"nao", obs:"" },
-    { item:"Forma de todos os pavimentos (dimensionamento pilares, vigas, lajes (com rebaixos), cortes parciais)", status:"nao", obs:"" },
-    { item:"Furações em vigas e lajes (inserir em Forma e Modelo BIM), informar furações não aprovadas, sugerindo alterações para viabilizar", status:"nao", obs:"" },
-    { item:"Forma do barrilete e reservatório (dimensões de vigas, lajes e furações preliminares)", status:"nao", obs:"" },
+    { item:"Ajustes conforme solicitações da Compatibilização (Construflow)", status:"sim", obs:"" },
+    { item:"Forma de todos os pavimentos (dimensionamento pilares, vigas, lajes (com rebaixos), cortes parciais)", status:"sim", obs:"" },
+    { item:"Furações em vigas e lajes (inserir em Forma e Modelo BIM), informar furações não aprovadas, sugerindo alterações para viabilizar", status:"parcial", obs:"RECEBIDO APENAS A ANÁLISE DE FUROS NAS LAJES NERVURADAS" },
+    { item:"Forma do barrilete e reservatório (dimensões de vigas, lajes e furações preliminares)", status:"sim", obs:"" },
     { item:"Planta de platibandas com detalhamento de ancoragem", status:"nao", obs:"" },
-    { item:"Planta detalhamento de laje", status:"nao", obs:"" },
+    { item:"Planta detalhamento de laje", status:"sim", obs:"PLANTAS APRESENTAM A DISTRIBUIÇÃO REVISADA DE CUBETAS" },
     { item:"Cortes transversais e longitudinais de rampas, escadas, reservatórios, caixas d´água, piscinas e geral de todos os pavimentos", status:"nao", obs:"" },
-    { item:"Dimensionamento dos blocos de fundação", status:"nao", obs:"" },
+    { item:"Dimensionamento dos blocos de fundação", status:"parcial", obs:"PLANTA NÃO APRESENTA TABELA COM AS INFORMAÇÕES DE DIMENSÕES E NÍVEIS" },
     { item:"Elevações", status:"nao", obs:"" },
     { item:"Planta de graute (se necessário)", status:"nao", obs:"" },
-    { item:"Planta de locação dos pilares", status:"nao", obs:"" },
-    { item:"Planta de cargas", status:"nao", obs:"" },
+    { item:"Planta de locação dos pilares", status:"sim", obs:"" },
+    { item:"Planta de cargas", status:"sim", obs:"" },
     { item:"Locação de juntas de dilatação e detalhes construtivos", status:"nao", obs:"" },
     { item:"Estudo de cargas alvenaria (se necessário)", status:"nao", obs:"" },
-    { item:"Ajustes / Respostas Construflow - Relatório de Compatibilização", status:"nao", obs:"" },
-    { item:"Pacote Entregue (PDF/DWG): Formas", status:"nao", obs:"" },
-    { item:"Pacote Entregue (IFC): Modelo BIM (Espelho das Formas, em caso de divergêcia, será considerado o modelo como informação na compatibilização)", status:"nao", obs:"" },
+    { item:"Ajustes / Respostas Construflow - Relatório de Compatibilização", status:"sim", obs:"" },
+    { item:"Pacote Entregue (PDF/DWG): Formas", status:"sim", obs:"" },
+    { item:"Pacote Entregue (IFC): Modelo BIM (Espelho das Formas, em caso de divergêcia, será considerado o modelo como informação na compatibilização)", status:"sim", obs:"" },
   ],
   "EST-EX": [
     { item:"Forma de todos os pavimentos com furações consolidadas", status:"nao", obs:"" },
@@ -2624,7 +2630,7 @@ var entItens = {
     { item:"Posição e volume da bacia de contenção (quando se aplica)", status:"sim", obs:"NÃO SE APLICA AO PROJETO" },
     { item:"Posição, dimensão mínima das casa de bombas e acessos das mesmas", status:"sim", obs:"" },
     { item:"Definição do posicionamento bombas (barrilete e casas de bombas)", status:"sim", obs:"" },
-    { item:"Definição da área mínima de ventilação para as casa de bombas", status:"nao", obs:"" },
+    { item:"Definição da área mínima de ventilação para as casa de bombas", status:"nao", obs:"ITEM EM ABERTO NA ENTREGA DO PE CICLO 01 - EMBASAMENTO" },
     { item:"Posicionamento caixa de areia, gordura, inspeção e espuma", status:"sim", obs:"" },
     { item:"Posição de torneiras de jardim", status:"sim", obs:"" },
     { item:"Posição da casa de máquinas de piscina e trocador de calor (quando se aplica)", status:"sim", obs:"" },
@@ -2634,7 +2640,7 @@ var entItens = {
     { item:"Definição do sistema e desvios das Prumadas Pluviais", status:"sim", obs:"" },
     { item:"Definição do sistema e desvios das Prumadas de Drenagem", status:"sim", obs:"" },
     { item:"Pré-dimensionamento dos desvios de prumadas para validação de pé-direito", status:"sim", obs:"" },
-    { item:"Cotas de saída Pluvial e Esgoto", status:"nao", obs:"" },
+    { item:"Cotas de saída Pluvial e Esgoto", status:"nao", obs:"ITEM EM ABERTO NA ENTREGA DO PE CICLO 01 - EMBASAMENTO" },
     { item:"Posiçao Hidrômetro (verificar concessionária local)", status:"sim", obs:"" },
     { item:"Subsistema de Alimentaçao (Hidrômetro de entrada e alimentação predial)", status:"sim", obs:"" },
     { item:"Pacote Entregue (PDF/ DWG): Planta Baixa dos Pavimentos (sem cotas)", status:"sim", obs:"" },
@@ -2642,7 +2648,7 @@ var entItens = {
   ],
   "HID-AP": [
     { item:"C1 - Ajustes conforme solicitações da Compatibilização (Construflow)", status:"sim", obs:"AJUSTES DE ANTES DO USO DO CONTRUFLOW" },
-    { item:"C1 - Subsistema de Reservação (Reservatório Superior, Inferior, Reaproveitamento, Bacia de Contenção)", status:"parcial", obs:"FALTA DEFINIÇÃO DE ELEMENTOS DO SISTEMA DE ÁGUA QUENTE - ITEM EM REVISÃO COM CK E TERMOSUL" },
+    { item:"C1 - Subsistema de Reservação (Reservatório Superior, Inferior, Reaproveitamento, Bacia de Contenção)", status:"parcial", obs:"FALTA DEFINIÇÃO DE ELEMENTOS DO SISTEMA DE ÁGUA QUENTE - ITEM EM REVISÃO COM CK E TERMOSUL AGUARDANDO ENTREGA DO PE CICLO 01 DA TORRE PARA NOVA VERIFICAÇÃO" },
     { item:"C1 - Bombas e tubulações da casa de máquinas", status:"sim", obs:"" },
     { item:"C1 - Prumada de recalque", status:"sim", obs:"" },
     { item:"C1 - Prumada de consumo", status:"sim", obs:"" },
@@ -2660,8 +2666,8 @@ var entItens = {
     { item:"C1 - Pacote Entregue (IFC): Modelo BIM (Espelho das plantas, em caso de divergêcia, será considerado o modelo como informação na compatibilização)", status:"sim", obs:"" },
     { item:"C2 - Ajustes conforme solicitações da Compatibilização (Construflow) e análise da estrutura referente aos desvios", status:"sim", obs:"AJUSTES DE ANTES DO USO DO CONTRUFLOW" },
     { item:"C2 - Subsistema de Distribuição do pavimento embasamento e tipo (Ramal, Sub-ramal, pontos hidráulicos, indicação dos diâmetros das tubulações coletores e sub-coletores)", status:"sim", obs:"" },
-    { item:"C2 - Pontos hidráulicos e sanitários - Nas áreas de interiores, paisagismo", status:"parcial", obs:"PONTOS DAS ÁREAS COMUNS EM REVISÃO PELA CK / INTERIORES" },
-    { item:"C2 - Previsão de infra para irrigação e/ou piscina (alimentação e drenagem)", status:"parcial", obs:"FALTOU FLOREIRA DO TIPO DIFERENCIADO" },
+    { item:"C2 - Pontos hidráulicos e sanitários - Nas áreas de interiores, paisagismo", status:"sim", obs:"ATENDIDO NO PE-CICLO 01" },
+    { item:"C2 - Previsão de infra para irrigação e/ou piscina (alimentação e drenagem)", status:"parcial", obs:"AGUARDANDO ENTREGA DO PE CICLO 01 DA TORRE PARA NOVA VERIFICAÇÃO DA FLOREIRA DO TIPO DIF." },
     { item:"C2 - Posicionamento de cardais (confirmar necessidade no projeto)", status:"sim", obs:"NÃO SE APLICA AO PROJETO" },
     { item:"C2 - Tubulação de drenos da climatização", status:"sim", obs:"" },
     { item:"C2 - Emissão plantas de furação / cubetas", status:"sim", obs:"" },
@@ -2670,12 +2676,12 @@ var entItens = {
     { item:"C2 - Pacote Entregue (IFC): Modelo BIM (Espelho das plantas, em caso de divergêcia, será considerado o modelo como informação na compatibilização)", status:"sim", obs:"" },
   ],
   "HID-PE": [
-    { item:"Ajustes conforme solicitações da Compatibilização (Construflow)", status:"nao", obs:"" },
-    { item:"Atualização plantas de furação (conforme atualização de projeto e comentários da analise de estrutura)", status:"nao", obs:"" },
+    { item:"Ajustes conforme solicitações da Compatibilização (Construflow)", status:"parcial", obs:"ATENDIDO NO PE CICLO 02 - EMBASAMENTO AGUARDANDO ENTREGA DA TORRE PARA CONCLUSÃO" },
+    { item:"Atualização plantas de furação (conforme atualização de projeto e comentários da analise de estrutura)", status:"parcial", obs:"ATENDIDO NO PE CICLO 02 - EMBASAMENTO AGUARDANDO ENTREGA DA TORRE PARA CONCLUSÃO" },
     { item:"Detalhe Shaft hall", status:"nao", obs:"" },
-    { item:"Ajustes / Respostas Construflow - Relatório de Compatibilização", status:"nao", obs:"" },
-    { item:"Pacote Entregue (PDF/ DWG): Planta Baixa dos Pavimentos (sem cotas)", status:"nao", obs:"" },
-    { item:"Pacote Entregue (IFC): Modelo BIM (Espelho das plantas, em caso de divergêcia, será considerado o modelo como informação na compatibilização)", status:"nao", obs:"" },
+    { item:"Ajustes / Respostas Construflow - Relatório de Compatibilização", status:"parcial", obs:"ATENDIDO NO PE CICLO 02 - EMBASAMENTO AGUARDANDO ENTREGA DA TORRE PARA CONCLUSÃO" },
+    { item:"Pacote Entregue (PDF/ DWG): Planta Baixa dos Pavimentos (sem cotas)", status:"parcial", obs:"ATENDIDO NO PE CICLO 02 - EMBASAMENTO AGUARDANDO ENTREGA DA TORRE PARA CONCLUSÃO" },
+    { item:"Pacote Entregue (IFC): Modelo BIM (Espelho das plantas, em caso de divergêcia, será considerado o modelo como informação na compatibilização)", status:"parcial", obs:"ATENDIDO NO PE CICLO 02 - EMBASAMENTO AGUARDANDO ENTREGA DA TORRE PARA CONCLUSÃO" },
   ],
   "HID-EX": [
     { item:"Planta de forro de todos os pavimentos, com a distribuição de água", status:"nao", obs:"" },
@@ -2727,12 +2733,12 @@ var entItens = {
     { item:"C2 - Pacote Entregue (IFC): Modelo BIM (Espelho das plantas, em caso de divergêcia, será considerado o modelo como informação na compatibilização)", status:"sim", obs:"" },
   ],
   "PIS-PE": [
-    { item:"Ajustes conforme solicitações da Compatibilização (Construflow)", status:"nao", obs:"" },
+    { item:"Ajustes conforme solicitações da Compatibilização (Construflow)", status:"sim", obs:"" },
     { item:"Detalhes de montagem", status:"nao", obs:"" },
-    { item:"Planta baixa", status:"nao", obs:"" },
-    { item:"Ajustes / Respostas Construflow - Relatório de Compatibilização", status:"nao", obs:"" },
-    { item:"Pacote Entregue (PDF/ DWG): Planta Baixa dos Pavimentos (sem cotas)", status:"nao", obs:"" },
-    { item:"Pacote Entregue (IFC): Modelo BIM (Espelho das plantas, em caso de divergêcia, será considerado o modelo como informação na compatibilização)", status:"nao", obs:"" },
+    { item:"Planta baixa", status:"sim", obs:"" },
+    { item:"Ajustes / Respostas Construflow - Relatório de Compatibilização", status:"sim", obs:"" },
+    { item:"Pacote Entregue (PDF/ DWG): Planta Baixa dos Pavimentos (sem cotas)", status:"sim", obs:"" },
+    { item:"Pacote Entregue (IFC): Modelo BIM (Espelho das plantas, em caso de divergêcia, será considerado o modelo como informação na compatibilização)", status:"sim", obs:"" },
   ],
   "PIS-EX": [
     { item:"Planta de todos os pavimentos", status:"nao", obs:"" },
@@ -2752,7 +2758,7 @@ var entItens = {
   "PCI-EP": [
     { item:"Definição da Rota de Fuga, saídas de emergência e Paredes TRRF", status:"sim", obs:"" },
     { item:"Indicação de portas corta fogo (vão de passagem livre mínimo)", status:"sim", obs:"" },
-    { item:"Validação da posição e dimensão dos Dutos das Escadas", status:"parcial", obs:"DUTO REVISADO NA ARQUITETURA - AGUARDANDO VALIDAÇÃO DO APONTAMENTO" },
+    { item:"Validação da posição e dimensão dos Dutos das Escadas", status:"sim", obs:"DUTO INCOPORADO - ITEM A SER VALIDADO NA COMPATIBILIZAÇÃO DO PE CICLO 01" },
     { item:"Apresentação das caracteristicas dos degraus - Base, espelho e quantidade", status:"sim", obs:"" },
     { item:"Validação de área de resgate cadeirantes (escada)", status:"sim", obs:"" },
     { item:"Definição da Tomada de Ar Externo (Escada)", status:"sim", obs:"" },
@@ -2762,7 +2768,7 @@ var entItens = {
     { item:"Definição da posição dos medidores de gás", status:"sim", obs:"" },
     { item:"Validação do dimensionamento e localização dos shafts Gerais", status:"sim", obs:"" },
     { item:"Validação barreira física Piscina", status:"sim", obs:"" },
-    { item:"Verificar demandas de ventilação nas garagens", status:"parcial", obs:"INDICADO PELO PREVENTIVO PORÉM FALTA CONFIRMAÇÃO DO MODELO DO ELEMENTO VAZADO E DAS VENEZIANAS PELA CK PARA VERIFICAÇÃO FINAL" },
+    { item:"Verificar demandas de ventilação nas garagens", status:"sim", obs:"INDICADO PELO PREVENTIVO E PROJETO LEGAL ITEM A SER VALIDADO NA COMPATIBILIZAÇÃO DO PE CICLO 01" },
     { item:"Compartimentação Vertical e Horizontal", status:"sim", obs:"" },
     { item:"Local, definição de acesso e dimensionamento mínimo das Casa de Bombas SHP", status:"sim", obs:"" },
     { item:"Posicionamento bombas SHP", status:"sim", obs:"" },
@@ -2783,8 +2789,8 @@ var entItens = {
     { item:"C2 - Ajustes conforme solicitações da Compatibilização (Construflow)", status:"sim", obs:"AJUSTES DE ANTES DO USO DO CONTRUFLOW" },
     { item:"C2 - Tubulações e ponto de consumo da rede secundária de gás", status:"sim", obs:"" },
     { item:"C2 - Lançamento de eletrodutos conforme pontos aprovados (lajes/paredes/pisos)", status:"sim", obs:"" },
-    { item:"C2 - Detalhamento das VP's conforme esquadrias", status:"nao", obs:"ITEM INCLUÍDO NA ARQUITETURA - A SER VALIDADO E DETALHADO NA PRÓXIMA ETAPA" },
-    { item:"C2 - Lançamento pontos solicitados por interiores", status:"parcial", obs:"PONTOS DAS ÁREAS COMUNS EM REVISÃO PELA CK / INTERIORES" },
+    { item:"C2 - Detalhamento das VP's conforme esquadrias", status:"parcial", obs:"CORREÇÕES SERÃO INDICADAS NA COMPATIBILIZAÇÃO DO PE CICLO 01" },
+    { item:"C2 - Lançamento pontos solicitados por interiores", status:"parcial", obs:"MATERIAL DE DEFINIÇÕES CK NÃO ABSORVIDO NO PE-CICLO 01" },
     { item:"C2 - Ramais e bicos de sprinkler (Confirmar necessidade em função do porte do projeto)", status:"sim", obs:"NÃO SE APLICA AO PROJETO" },
     { item:"C2 - Casa de bombas (Confirmar necessidade em função do porte do projeto)", status:"sim", obs:"" },
     { item:"C2 - Emissão plantas de furação / cubetas", status:"sim", obs:"" },
@@ -2793,12 +2799,12 @@ var entItens = {
     { item:"C2 - Pacote Entregue (IFC): Modelo BIM (Espelho das plantas, em caso de divergêcia, será considerado o modelo como informação na compatibilização)", status:"sim", obs:"" },
   ],
   "PCI-PE": [
-    { item:"Ajustes conforme solicitações da Compatibilização (Construflow)", status:"nao", obs:"" },
+    { item:"Ajustes conforme solicitações da Compatibilização (Construflow)", status:"parcial", obs:"ATENDIDO NO PE CICLO 02 - EMBASAMENTO AGUARDANDO ENTREGA DA TORRE PARA CONCLUSÃO" },
     { item:"Detalhe Shaft hall", status:"nao", obs:"" },
-    { item:"Atualização plantas de furação (conforme atualização de projeto e comentários da analise de estrutura)", status:"nao", obs:"" },
-    { item:"Ajustes / Respostas Construflow - Relatório de Compatibilização", status:"nao", obs:"" },
-    { item:"Pacote Entregue (PDF/ DWG): Planta Baixa dos Pavimentos (sem cotas)", status:"nao", obs:"" },
-    { item:"Pacote Entregue (IFC): Modelo BIM (Espelho das plantas, em caso de divergêcia, será considerado o modelo como informação na compatibilização)", status:"nao", obs:"" },
+    { item:"Atualização plantas de furação (conforme atualização de projeto e comentários da analise de estrutura)", status:"parcial", obs:"ATENDIDO NO PE CICLO 02 - EMBASAMENTO AGUARDANDO ENTREGA DA TORRE PARA CONCLUSÃO" },
+    { item:"Ajustes / Respostas Construflow - Relatório de Compatibilização", status:"parcial", obs:"ATENDIDO NO PE CICLO 02 - EMBASAMENTO AGUARDANDO ENTREGA DA TORRE PARA CONCLUSÃO" },
+    { item:"Pacote Entregue (PDF/ DWG): Planta Baixa dos Pavimentos (sem cotas)", status:"parcial", obs:"ATENDIDO NO PE CICLO 02 - EMBASAMENTO AGUARDANDO ENTREGA DA TORRE PARA CONCLUSÃO" },
+    { item:"Pacote Entregue (IFC): Modelo BIM (Espelho das plantas, em caso de divergêcia, será considerado o modelo como informação na compatibilização)", status:"parcial", obs:"ATENDIDO NO PE CICLO 02 - EMBASAMENTO AGUARDANDO ENTREGA DA TORRE PARA CONCLUSÃO" },
   ],
   "PCI-EX": [
     { item:"Planta de todos os pavimentos", status:"nao", obs:"" },
@@ -4165,10 +4171,10 @@ function drawTrendChart() {
   //   Realizado = % atual de cada fase * peso (horas) / total
   //   Planejado = progresso linear planejado por fase acumulado
   //   Projeção  = curva planejada reescalada a partir do ponto atual
-  var realData = [22, 22, 22, 22, 22, null, null, null, null, null, null];
+  var realData = [27, 27, 27, 27, 27, null, null, null, null, null, null];
   // Linha planejada (cronograma original — estimativa)
   var planejado = [6.7, 13.3, 20, 33.3, 40, 53.3, 66.7, 80, 86.7, 93.3, 100];
-  var projecao = [null, null, null, null, 22, 35, 48, 61, 74, 87, 100];
+  var projecao = [null, null, null, null, 27, 39.2, 51.3, 63.5, 75.7, 87.8, 100];
   var W = (canvas.parentElement && canvas.parentElement.clientWidth > 50) ? canvas.parentElement.clientWidth : (canvas.parentElement && canvas.parentElement.offsetWidth > 50 ? canvas.parentElement.offsetWidth : 1280);
   var H = 220;
   canvas.width  = W * DPR;
