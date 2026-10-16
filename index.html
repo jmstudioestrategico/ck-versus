@@ -788,7 +788,7 @@ var respDisplayName = {
 // ETAPAS_START
 const etapas = [
   { id:"AP", label:"Anteprojeto (AP)", inicio:"15/05/26", fim:"27/08/26", progresso:100, cor:"#378ADD" },
-  { id:"PE", label:"Pré-Executivo (PE)", inicio:"28/08/26", fim:"08/12/26", progresso:12, cor:"#7F77DD" },
+  { id:"PE", label:"Pré-Executivo (PE)", inicio:"28/08/26", fim:"08/12/26", progresso:44, cor:"#7F77DD" },
   { id:"EX", label:"Executivo (EX)", inicio:"15/10/26", fim:"08/03/27", progresso:0, cor:"#BA7517" },
 ];
 // ETAPAS_END
@@ -797,8 +797,8 @@ const etapas = [
 const ciclos = [
   { id:"C1", etapa:"AP", label:"Ciclo 01", sub:"Arquitetura Mannz", inicio:"15/05/26", fim:"29/06/26", progresso:100 },
   { id:"C2", etapa:"AP", label:"Ciclo 02", sub:"Anteprojeto 02", inicio:"30/06/26", fim:"27/08/26", progresso:100 },
-  { id:"C1", etapa:"PE", label:"Ciclo 01", sub:"Embasamento", inicio:"28/08/26", fim:"29/10/26", progresso:22 },
-  { id:"C2", etapa:"PE", label:"Ciclo 02", sub:"Torre", inicio:"09/09/26", fim:"08/12/26", progresso:0 },
+  { id:"C1", etapa:"PE", label:"Ciclo 01", sub:"Embasamento", inicio:"28/08/26", fim:"29/10/26", progresso:79 },
+  { id:"C2", etapa:"PE", label:"Ciclo 02", sub:"Torre", inicio:"09/09/26", fim:"08/12/26", progresso:3 },
   { id:"C1", etapa:"EX", label:"Ciclo 01", sub:"Embasamento", inicio:"23/10/26", fim:"05/01/27", progresso:0 },
   { id:"C2", etapa:"EX", label:"Ciclo 02", sub:"Torre", inicio:"25/11/26", fim:"03/02/27", progresso:0 },
   { id:"C3", etapa:"EX", label:"Ciclo 03", sub:"Fechamento", inicio:"28/01/27", fim:"08/03/27", progresso:0 },
@@ -865,7 +865,7 @@ const disciplinas = [
 // ─────────────────────────────────────────────────────────────────────────────
 
 var acoesSemanal = [
-  // ── Controle de Ações (VRS-CONTROLE_ACOES — 23/09/2026) ──────────────────
+  // ── Controle de Ações (VRS-CONTROLE_ACOES — 16/10/2026) ──────────────────
   // Não mesclar com acoesCROR aqui — a junção é feita em var acoes abaixo.
   { prazo:"--", item:"Cronograma", desc:"Definição do cronograma geral e demais organizações", resp:"CK", criticidade:"Crítica", status:"Concluído", conclusao:"--", diasRest:"--", obs:"E-mail CK 24/04/2026: Sobre o cronograma, vamos trabalhar com o prevision. Estamos na fase de aquisição dos pacotes de incorporação, aviso quando a aquisição for concluída para nos alinharmos quanto aos cronogramas.", inicio:"15/04/26", disc:"CONSTRUTORA" },
   { prazo:"24/04/26", item:"Briefing Arquitetura", desc:"Preenchimento e envio do briefing a MANNZ, para start da transcrição arquitetura executiva", resp:"CK", criticidade:"Alta", status:"Concluído", conclusao:"24/04/26", diasRest:"--", obs:"Briefing enviado pela Mannz dia 15/04/2026", inicio:"15/04/26", disc:"CONSTRUTORA" },
@@ -876,7 +876,7 @@ var acoesSemanal = [
 
 var acoesCROR = [
   // ── Tarefas do cronograma (CROR) ────────────────────────────────────────
-  // Gerado em 23/09/2026. Atualizado pela automação CROR.
+  // Gerado em 16/10/2026. Atualizado pela automação CROR.
   // Não mesclar com acoesSemanal aqui — a junção é feita em var acoes abaixo.
   { prazo:"03/08/26", item:"EMISSÃO CONSULTA PRÉVIA (ANTEPROJETO 02)", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"21/07/26", disc:"ELÉTRICO E TELECOMUNICAÇÕES", entregavel:false },
   { prazo:"28/10/26", item:"ELABORAÇÃO ESTUDO DE PROTEÇÃO (PRÉ EXECUTIVO)", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"15/10/26", disc:"ELÉTRICO E TELECOMUNICAÇÕES", entregavel:false },
@@ -912,25 +912,25 @@ var acoesCROR = [
   { prazo:"09/09/26", item:"EST: PE-C1 - FORMAS E MODELO; ATUALIZAÇÃO PLANTA DE CARGA; (ENTREGÁVEIS ETAPA + ATENDIMENTO CFLOW)", desc:"", resp:"PRECISÃO ESTRUTURAL", criticidade:"Baixa", status:"Concluido", conclusao:"09/09/26", diasRest:"--", obs:"", inicio:"28/08/26", disc:"ESTRUTURAL", entregavel:false },
   { prazo:"18/09/26", item:"PAI: PE-C1 - PRANCHAS E ATUALIZAÇÃO BASE ARQUIETURA + ATENDIMENTO CFLOW", desc:"", resp:"LE NÔTRE", criticidade:"Baixa", status:"Concluido", conclusao:"18/09/26", diasRest:"--", obs:"", inicio:"28/08/26", disc:"PAISAGISMO", entregavel:false },
   { prazo:"18/09/26", item:"IRR: PE-C1 - PRANCHAS E ATUALIZAÇÃO BASE ARQUIETURA + ATENDIMENTO CFLOW", desc:"", resp:"LE NÔTRE", criticidade:"Baixa", status:"Concluido", conclusao:"18/09/26", diasRest:"--", obs:"", inicio:"28/08/26", disc:"IRRIGAÇÃO", entregavel:false },
-  { prazo:"21/09/26", item:"SAN: PE-C1 - PRANCHAS E MODELOS (EMBASAMENTO) - ENTREGÁVEIS ETAPA + ATENDIMENTO CFLOW", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Baixa", status:"Em andamento", conclusao:"-", diasRest:"--", obs:"", inicio:"28/08/26", disc:"SANITÁRIO", entregavel:false },
-  { prazo:"21/09/26", item:"HID: PE-C1 - PRANCHAS E MODELOS (EMBASAMENTO) - ENTREGÁVEIS ETAPA + ATENDIMENTO CFLOW", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Baixa", status:"Em andamento", conclusao:"-", diasRest:"--", obs:"", inicio:"28/08/26", disc:"HIDRÁULICO", entregavel:false },
-  { prazo:"21/09/26", item:"PCI: PE-C1 - PRANCHAS E MODELOS (EMBASAMENTO) - ENTREGÁVEIS ETAPA + ATENDIMENTO CFLOW", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Baixa", status:"Em andamento", conclusao:"-", diasRest:"--", obs:"", inicio:"28/08/26", disc:"PREVENTIVO", entregavel:false },
-  { prazo:"21/09/26", item:"ELE: PE-C1 - PRANCHAS E MODELOS (EMBASAMENTO) - ENTREGÁVEIS ETAPA + ATENDIMENTO CFLOW", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Baixa", status:"Em andamento", conclusao:"-", diasRest:"--", obs:"", inicio:"28/08/26", disc:"ELÉTRICO E TELECOMUNICAÇÕES", entregavel:false },
-  { prazo:"21/09/26", item:"COM: PE-C1 - PRANCHAS E MODELOS (EMBASAMENTO) - ENTREGÁVEIS ETAPA + ATENDIMENTO CFLOW", desc:"", resp:"", criticidade:"Baixa", status:"Em andamento", conclusao:"-", diasRest:"--", obs:"", inicio:"28/08/26", disc:"COMUNICAÇÃO", entregavel:false },
-  { prazo:"21/09/26", item:"SPD: PE-C1 - PRANCHAS E MODELOS (EMBASAMENTO) - ENTREGÁVEIS ETAPA + ATENDIMENTO CFLOW", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Baixa", status:"Em andamento", conclusao:"-", diasRest:"--", obs:"", inicio:"28/08/26", disc:"SPDA", entregavel:false },
-  { prazo:"21/09/26", item:"CLI: PE-C1 - PRANCHAS E MODELOS (EMBASAMENTO) - ENTREGÁVEIS ETAPA + ATENDIMENTO CFLOW", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Baixa", status:"Em andamento", conclusao:"-", diasRest:"--", obs:"", inicio:"28/08/26", disc:"CLIMATIZAÇÃO E EXAUSTÃO", entregavel:false },
+  { prazo:"21/09/26", item:"SAN: PE-C1 - PRANCHAS E MODELOS (EMBASAMENTO) - ENTREGÁVEIS ETAPA + ATENDIMENTO CFLOW", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Baixa", status:"Concluido", conclusao:"21/09/26", diasRest:"--", obs:"", inicio:"28/08/26", disc:"SANITÁRIO", entregavel:false },
+  { prazo:"21/09/26", item:"HID: PE-C1 - PRANCHAS E MODELOS (EMBASAMENTO) - ENTREGÁVEIS ETAPA + ATENDIMENTO CFLOW", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Baixa", status:"Concluido", conclusao:"21/09/26", diasRest:"--", obs:"", inicio:"28/08/26", disc:"HIDRÁULICO", entregavel:false },
+  { prazo:"21/09/26", item:"PCI: PE-C1 - PRANCHAS E MODELOS (EMBASAMENTO) - ENTREGÁVEIS ETAPA + ATENDIMENTO CFLOW", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Baixa", status:"Concluido", conclusao:"21/09/26", diasRest:"--", obs:"", inicio:"28/08/26", disc:"PREVENTIVO", entregavel:false },
+  { prazo:"21/09/26", item:"ELE: PE-C1 - PRANCHAS E MODELOS (EMBASAMENTO) - ENTREGÁVEIS ETAPA + ATENDIMENTO CFLOW", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Baixa", status:"Concluido", conclusao:"21/09/26", diasRest:"--", obs:"", inicio:"28/08/26", disc:"ELÉTRICO E TELECOMUNICAÇÕES", entregavel:false },
+  { prazo:"21/09/26", item:"COM: PE-C1 - PRANCHAS E MODELOS (EMBASAMENTO) - ENTREGÁVEIS ETAPA + ATENDIMENTO CFLOW", desc:"", resp:"", criticidade:"Baixa", status:"Concluido", conclusao:"21/09/26", diasRest:"--", obs:"", inicio:"28/08/26", disc:"COMUNICAÇÃO", entregavel:false },
+  { prazo:"21/09/26", item:"SPD: PE-C1 - PRANCHAS E MODELOS (EMBASAMENTO) - ENTREGÁVEIS ETAPA + ATENDIMENTO CFLOW", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Baixa", status:"Concluido", conclusao:"21/09/26", diasRest:"--", obs:"", inicio:"28/08/26", disc:"SPDA", entregavel:false },
+  { prazo:"21/09/26", item:"CLI: PE-C1 - PRANCHAS E MODELOS (EMBASAMENTO) - ENTREGÁVEIS ETAPA + ATENDIMENTO CFLOW", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Baixa", status:"Concluido", conclusao:"21/09/26", diasRest:"--", obs:"", inicio:"28/08/26", disc:"CLIMATIZAÇÃO E EXAUSTÃO", entregavel:false },
   { prazo:"21/09/26", item:"EXA: PE-C1 - PRANCHAS E MODELOS (EMBASAMENTO) - ENTREGÁVEIS ETAPA + ATENDIMENTO CFLOW", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Baixa", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"28/08/26", disc:"CLIMATIZAÇÃO E EXAUSTÃO", entregavel:false },
-  { prazo:"21/09/26", item:"PIS: PE-C1 - PRANCHAS E MODELOS (EMBASAMENTO) - ENTREGÁVEIS ETAPA + ATENDIMENTO CFLOW", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Baixa", status:"Em andamento", conclusao:"-", diasRest:"--", obs:"", inicio:"28/08/26", disc:"PISCINA", entregavel:false },
-  { prazo:"21/09/26", item:"PAS: PE-C1: EMISSÃO INICIAL FURAÇÃO TODAS AS DISCIPLINAS (EMBASAMENTO)", desc:"", resp:"", criticidade:"Baixa", status:"Em andamento", conclusao:"-", diasRest:"--", obs:"", inicio:"28/08/26", disc:"FURAÇÕES", entregavel:false },
+  { prazo:"21/09/26", item:"PIS: PE-C1 - PRANCHAS E MODELOS (EMBASAMENTO) - ENTREGÁVEIS ETAPA + ATENDIMENTO CFLOW", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Baixa", status:"Concluido", conclusao:"21/09/26", diasRest:"--", obs:"", inicio:"28/08/26", disc:"PISCINA", entregavel:false },
+  { prazo:"21/09/26", item:"PAS: PE-C1: EMISSÃO INICIAL FURAÇÃO TODAS AS DISCIPLINAS (EMBASAMENTO)", desc:"", resp:"", criticidade:"Baixa", status:"Concluido", conclusao:"21/09/26", diasRest:"--", obs:"", inicio:"28/08/26", disc:"FURAÇÕES", entregavel:false },
   { prazo:"17/09/26", item:"RELATÓRIO/REUNIÃO - EFEITO PISTÃO, CASA DE MAQUINAS, POÇO (TODO EDIFÍCIO)", desc:"", resp:"", criticidade:"Baixa", status:"Concluido", conclusao:"17/09/26", diasRest:"--", obs:"", inicio:"28/08/26", disc:"CONSULTORIA ELEVADORES", entregavel:false },
   { prazo:"17/09/26", item:"RELATÓRIO/REUNIÃO - CHURRASQUEIRAS (TODO EDIFÍCIO)", desc:"", resp:"", criticidade:"Baixa", status:"Em andamento", conclusao:"-", diasRest:"--", obs:"", inicio:"28/08/26", disc:"CONSULTORIA CHURRASQUEIRA", entregavel:false },
   { prazo:"11/09/26", item:"INT: PE-C1 - PRANCHAS E MODELO (EMBASAMENTO)", desc:"", resp:"OSVALDO SEGUNDO", criticidade:"Baixa", status:"Concluido", conclusao:"11/09/26", diasRest:"--", obs:"", inicio:"28/08/26", disc:"INTERIORES", entregavel:false },
   { prazo:"18/09/26", item:"CK: ANÁLISE INTERIORES CK (EMBASAMENTO)", desc:"", resp:"CK", criticidade:"Baixa", status:"Concluido", conclusao:"18/09/26", diasRest:"--", obs:"", inicio:"14/09/26", disc:"CONSTRUTORA", entregavel:false },
-  { prazo:"23/09/26", item:"FUN: PE-C1 - PRANCHAS", desc:"", resp:"BORNSALES ENGENHARIA", criticidade:"Baixa", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"10/09/26", disc:"FUNDAÇÕES E CONTENÇÕES", entregavel:false },
-  { prazo:"28/09/26", item:"EST: PE-C1 - REFERENTE A EMISSÃO INICIAL FURAÇÃO - 2D (EMBASAMENTO)", desc:"", resp:"PRECISÃO ESTRUTURAL", criticidade:"Baixa", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"22/09/26", disc:"ESTRUTURAL", entregavel:false },
+  { prazo:"23/09/26", item:"FUN: PE-C1 - PRANCHAS", desc:"", resp:"BORNSALES ENGENHARIA", criticidade:"Baixa", status:"Concluido", conclusao:"23/09/26", diasRest:"--", obs:"", inicio:"10/09/26", disc:"FUNDAÇÕES E CONTENÇÕES", entregavel:false },
+  { prazo:"28/09/26", item:"EST: PE-C1 - REFERENTE A EMISSÃO INICIAL FURAÇÃO - 2D (EMBASAMENTO)", desc:"", resp:"PRECISÃO ESTRUTURAL", criticidade:"Baixa", status:"Concluido", conclusao:"28/09/26", diasRest:"--", obs:"", inicio:"22/09/26", disc:"ESTRUTURAL", entregavel:false },
   { prazo:"23/09/26", item:"ARQ: PE-C1 - VERIFICAÇÃO ENTREGÁVEIS", desc:"", resp:"MANNZ", criticidade:"Baixa", status:"Concluido", conclusao:"23/09/26", diasRest:"--", obs:"", inicio:"23/09/26", disc:"COMPATIBILIZAÇÃO", entregavel:false },
-  { prazo:"15/10/26", item:"ARQ: PE-C1 - RELATÓRIO DE COMPATIBILIZAÇÃO RC.R01 + FURAÇÃO (INSTALAÇÕES)", desc:"", resp:"MANNZ", criticidade:"Baixa", status:"Em andamento", conclusao:"-", diasRest:"--", obs:"", inicio:"24/09/26", disc:"COMPATIBILIZAÇÃO", entregavel:false },
-  { prazo:"22/10/26", item:"ARQ: PE-C1 - ATUALIZAÇÃO ARQUITETURA CONFORME COMPATIBILIZAÇÃO E RELATÓRIO ESQUADRIAS", desc:"", resp:"MANNZ", criticidade:"Baixa", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"16/10/26", disc:"COMPATIBILIZAÇÃO", entregavel:false },
+  { prazo:"15/10/26", item:"ARQ: PE-C1 - RELATÓRIO DE COMPATIBILIZAÇÃO RC.R01 + FURAÇÃO (INSTALAÇÕES)", desc:"", resp:"MANNZ", criticidade:"Baixa", status:"Concluido", conclusao:"15/10/26", diasRest:"--", obs:"", inicio:"24/09/26", disc:"COMPATIBILIZAÇÃO", entregavel:false },
+  { prazo:"22/10/26", item:"ARQ: PE-C1 - ATUALIZAÇÃO ARQUITETURA CONFORME COMPATIBILIZAÇÃO E RELATÓRIO ESQUADRIAS", desc:"", resp:"MANNZ", criticidade:"Baixa", status:"Em andamento", conclusao:"-", diasRest:"--", obs:"", inicio:"16/10/26", disc:"COMPATIBILIZAÇÃO", entregavel:false },
   { prazo:"28/09/26", item:"CK: REFERENTE A ENTREGA DOS COMPLEMENTARES PE-C1", desc:"", resp:"CK", criticidade:"Baixa", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"22/09/26", disc:"CONSTRUTORA", entregavel:false },
   { prazo:"29/10/26", item:"CK: REFERENTE A ENTREGA DA ARQUITETURA REVISADA PE-C1", desc:"", resp:"CK", criticidade:"Baixa", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"23/10/26", disc:"CONSTRUTORA", entregavel:false },
   { prazo:"25/09/26", item:"CK: REFERENTE A ENTREGA DE PAISAGISMO PE-C1", desc:"", resp:"CK", criticidade:"Baixa", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"21/09/26", disc:"CONSTRUTORA", entregavel:false },
@@ -946,17 +946,17 @@ var acoesCROR = [
   { prazo:"22/10/26", item:"PE-C1: INSTALAÇÕES - Atualização planta de furação conforme compatibilização (EMBASAMENTO)", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Baixa", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"16/10/26", disc:"SPDA", entregavel:false },
   { prazo:"22/10/26", item:"PE-C1: INSTALAÇÕES - Atualização planta de furação conforme compatibilização (EMBASAMENTO)", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Baixa", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"16/10/26", disc:"PISCINA", entregavel:false },
   { prazo:"29/10/26", item:"PE-C1: ESTRUTURA - Validação final 2D EMBASAMENTO + FORMAS E MODELO COM FUROS TÉRREO E G1", desc:"", resp:"PRECISÃO ESTRUTURAL", criticidade:"Baixa", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"23/10/26", disc:"ESTRUTURAL", entregavel:false },
-  { prazo:"21/09/26", item:"EST: PE-C2 - FORMAS E MODELO; ATUALIZAÇÃO PLANTA DE CARGA; (ENTREGÁVEIS ETAPA + ATENDIMENTO CFLOW)", desc:"", resp:"PRECISÃO ESTRUTURAL", criticidade:"Media", status:"Em andamento", conclusao:"-", diasRest:"--", obs:"", inicio:"10/09/26", disc:"ESTRUTURAL", entregavel:false },
-  { prazo:"14/10/26", item:"SAN: PE-C2 - PRANCHAS E MODELOS (TORRE) - ENTREGÁVEIS ETAPA + ATENDIMENTO CFLOW", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"21/09/26", disc:"SANITÁRIO", entregavel:false },
-  { prazo:"14/10/26", item:"HID: PE-C2 - PRANCHAS E MODELOS (TORRE) - ENTREGÁVEIS ETAPA + ATENDIMENTO CFLOW", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"21/09/26", disc:"HIDRÁULICO", entregavel:false },
-  { prazo:"14/10/26", item:"PCI: PE-C2 - PRANCHAS E MODELOS (TORRE) - ENTREGÁVEIS ETAPA + ATENDIMENTO CFLOW", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"21/09/26", disc:"PREVENTIVO", entregavel:false },
-  { prazo:"14/10/26", item:"ELE: PE-C2 - PRANCHAS E MODELOS (TORRE) - ENTREGÁVEIS ETAPA + ATENDIMENTO CFLOW", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"21/09/26", disc:"ELÉTRICO E TELECOMUNICAÇÕES", entregavel:false },
-  { prazo:"14/10/26", item:"COM: PE-C2 - PRANCHAS E MODELOS (TORRE) - ENTREGÁVEIS ETAPA + ATENDIMENTO CFLOW", desc:"", resp:"", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"21/09/26", disc:"COMUNICAÇÃO", entregavel:false },
-  { prazo:"14/10/26", item:"SPD: PE-C2 - PRANCHAS E MODELOS (TORRE) - ENTREGÁVEIS ETAPA + ATENDIMENTO CFLOW", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"21/09/26", disc:"SPDA", entregavel:false },
-  { prazo:"14/10/26", item:"CLI: PE-C2 - PRANCHAS E MODELOS (TORRE) - ENTREGÁVEIS ETAPA + ATENDIMENTO CFLOW", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"21/09/26", disc:"CLIMATIZAÇÃO E EXAUSTÃO", entregavel:false },
-  { prazo:"14/10/26", item:"PIS: PE-C2 - PRANCHAS E MODELOS (TORRE) - ENTREGÁVEIS ETAPA + ATENDIMENTO CFLOW", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"21/09/26", disc:"PISCINA", entregavel:false },
-  { prazo:"14/10/26", item:"EXA: PE-C2 - PRANCHAS E MODELOS (TORRE) - ENTREGÁVEIS ETAPA + ATENDIMENTO CFLOW", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"21/09/26", disc:"CLIMATIZAÇÃO E EXAUSTÃO", entregavel:false },
-  { prazo:"14/10/26", item:"PAS: PE-C2 - EMISSÃO INICIAL FURAÇÃO TODAS AS DISCIPLINAS (TORRE)", desc:"", resp:"", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"21/09/26", disc:"FURAÇÕES", entregavel:false },
+  { prazo:"21/09/26", item:"EST: PE-C2 - FORMAS E MODELO; ATUALIZAÇÃO PLANTA DE CARGA; (ENTREGÁVEIS ETAPA + ATENDIMENTO CFLOW)", desc:"", resp:"PRECISÃO ESTRUTURAL", criticidade:"Media", status:"Concluido", conclusao:"21/09/26", diasRest:"--", obs:"", inicio:"10/09/26", disc:"ESTRUTURAL", entregavel:false },
+  { prazo:"14/10/26", item:"SAN: PE-C2 - PRANCHAS E MODELOS (TORRE) - ENTREGÁVEIS ETAPA + ATENDIMENTO CFLOW", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Media", status:"Em andamento", conclusao:"-", diasRest:"--", obs:"", inicio:"21/09/26", disc:"SANITÁRIO", entregavel:false },
+  { prazo:"14/10/26", item:"HID: PE-C2 - PRANCHAS E MODELOS (TORRE) - ENTREGÁVEIS ETAPA + ATENDIMENTO CFLOW", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Media", status:"Em andamento", conclusao:"-", diasRest:"--", obs:"", inicio:"21/09/26", disc:"HIDRÁULICO", entregavel:false },
+  { prazo:"14/10/26", item:"PCI: PE-C2 - PRANCHAS E MODELOS (TORRE) - ENTREGÁVEIS ETAPA + ATENDIMENTO CFLOW", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Media", status:"Em andamento", conclusao:"-", diasRest:"--", obs:"", inicio:"21/09/26", disc:"PREVENTIVO", entregavel:false },
+  { prazo:"14/10/26", item:"ELE: PE-C2 - PRANCHAS E MODELOS (TORRE) - ENTREGÁVEIS ETAPA + ATENDIMENTO CFLOW", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Media", status:"Em andamento", conclusao:"-", diasRest:"--", obs:"", inicio:"21/09/26", disc:"ELÉTRICO E TELECOMUNICAÇÕES", entregavel:false },
+  { prazo:"14/10/26", item:"COM: PE-C2 - PRANCHAS E MODELOS (TORRE) - ENTREGÁVEIS ETAPA + ATENDIMENTO CFLOW", desc:"", resp:"", criticidade:"Media", status:"Em andamento", conclusao:"-", diasRest:"--", obs:"", inicio:"21/09/26", disc:"COMUNICAÇÃO", entregavel:false },
+  { prazo:"14/10/26", item:"SPD: PE-C2 - PRANCHAS E MODELOS (TORRE) - ENTREGÁVEIS ETAPA + ATENDIMENTO CFLOW", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Media", status:"Em andamento", conclusao:"-", diasRest:"--", obs:"", inicio:"21/09/26", disc:"SPDA", entregavel:false },
+  { prazo:"14/10/26", item:"CLI: PE-C2 - PRANCHAS E MODELOS (TORRE) - ENTREGÁVEIS ETAPA + ATENDIMENTO CFLOW", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Media", status:"Em andamento", conclusao:"-", diasRest:"--", obs:"", inicio:"21/09/26", disc:"CLIMATIZAÇÃO E EXAUSTÃO", entregavel:false },
+  { prazo:"14/10/26", item:"PIS: PE-C2 - PRANCHAS E MODELOS (TORRE) - ENTREGÁVEIS ETAPA + ATENDIMENTO CFLOW", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Media", status:"Em andamento", conclusao:"-", diasRest:"--", obs:"", inicio:"21/09/26", disc:"PISCINA", entregavel:false },
+  { prazo:"14/10/26", item:"EXA: PE-C2 - PRANCHAS E MODELOS (TORRE) - ENTREGÁVEIS ETAPA + ATENDIMENTO CFLOW", desc:"", resp:"AMPLIE ENGENHARIA", criticidade:"Media", status:"Em andamento", conclusao:"-", diasRest:"--", obs:"", inicio:"21/09/26", disc:"CLIMATIZAÇÃO E EXAUSTÃO", entregavel:false },
+  { prazo:"14/10/26", item:"PAS: PE-C2 - EMISSÃO INICIAL FURAÇÃO TODAS AS DISCIPLINAS (TORRE)", desc:"", resp:"", criticidade:"Media", status:"Em andamento", conclusao:"-", diasRest:"--", obs:"", inicio:"21/09/26", disc:"FURAÇÕES", entregavel:false },
   { prazo:"21/10/26", item:"EST: PE-C1 - REFERENTE A EMISSÃO INICIAL FURAÇÃO - 2D (TORRE)", desc:"", resp:"PRECISÃO ESTRUTURAL", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"15/10/26", disc:"ESTRUTURAL", entregavel:false },
   { prazo:"23/10/26", item:"ARQ: PE-C2 - VERIFICAÇÃO ENTREGÁVEIS", desc:"", resp:"MANNZ", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"23/10/26", disc:"COMPATIBILIZAÇÃO", entregavel:false },
   { prazo:"16/11/26", item:"ARQ: PE-C2 - RELATÓRIO DE COMPATIBILIZAÇÃO RC.R02 + FURAÇÃO (INSTALAÇÕES)", desc:"", resp:"MANNZ", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"26/10/26", disc:"COMPATIBILIZAÇÃO", entregavel:false },
@@ -1036,14 +1036,13 @@ var acoesCROR = [
   { prazo:"06/11/26", item:"PACOTE DETALHAMENTO 06: ESQUADRIAS", desc:"", resp:"MANNZ", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"16/10/26", disc:"ARQUITETURA EXECUTIVA", entregavel:false },
   { prazo:"06/11/26", item:"PACOTE DETALHAMENTO 07: ALVENARIA OSSO", desc:"", resp:"MANNZ", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"16/10/26", disc:"ARQUITETURA EXECUTIVA", entregavel:false },
   { prazo:"13/04/27", item:"PACOTE DETALHAMENTO 07: ALVENARIA PAGINADA - APARTAMENTO TIPO", desc:"", resp:"MANNZ", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"09/03/27", disc:"ARQUITETURA EXECUTIVA", entregavel:false },
-  { prazo:"04/03/27", item:"ESTRUTURA - ARMAÇÃO", desc:"", resp:"PRECISÃO ESTRUTURAL", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"14/12/26", disc:"ESTRUTURAL", entregavel:false },
   { prazo:"15/01/27", item:"DETALHAMENTO DE MARCENARIA, SERRALHERIA E BASES METÁLICAS", desc:"", resp:"OSVALDO SEGUNDO", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"24/11/26", disc:"INTERIORES", entregavel:false },
   { prazo:"15/01/27", item:"DETALHAMENTO DE SUPERFÍCIE DE BANCADA", desc:"", resp:"OSVALDO SEGUNDO", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"24/11/26", disc:"INTERIORES", entregavel:false },
   { prazo:"15/01/27", item:"ESPECIFICAÇÃO DE LOUÇAS E METAIS", desc:"", resp:"OSVALDO SEGUNDO", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"24/11/26", disc:"INTERIORES", entregavel:false },
   { prazo:"15/01/27", item:"DETALHAMENTO DO LUMINOTÉCNICO (LUMINÁRIAS EMBUTIDAS, PENDENTES, DECORATIVAS)", desc:"", resp:"OSVALDO SEGUNDO", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"24/11/26", disc:"INTERIORES", entregavel:false },
   { prazo:"15/01/27", item:"ESPECIFICAÇÃO DE MÓVEIS SOLTOS (SOFÁS, POLTRONAS, MESAS, CADEIRAS E BANQUETAS)", desc:"", resp:"OSVALDO SEGUNDO", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"24/11/26", disc:"INTERIORES", entregavel:false },
   { prazo:"15/01/27", item:"ESPECIFICAÇÃO DE CORTINAS E PERSIANAS", desc:"", resp:"OSVALDO SEGUNDO", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"24/11/26", disc:"INTERIORES", entregavel:false },
-  { prazo:"15/01/27", item:"PLANILHA COM ESTIMATIVA DE CUSTOS", desc:"", resp:"OSVALDO SEGUNDO", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"24/11/26", disc:"INTERIORES", entregavel:false },
+  { prazo:"22/01/27", item:"PLANILHA COM ESTIMATIVA DE CUSTOS", desc:"", resp:"OSVALDO SEGUNDO", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"24/11/26", disc:"INTERIORES", entregavel:false },
   { prazo:"01/03/27", item:"DETALHAMENTO DE ESQUADRIAS", desc:"", resp:"AUM PROJETOS", criticidade:"Media", status:"Futuro", conclusao:"-", diasRest:"--", obs:"", inicio:"19/01/27", disc:"ESQUADRIAS", entregavel:false },
 ];
 
@@ -1071,8 +1070,8 @@ const projEnd   = new Date(Math.max.apply(null,_etDates));
 // AUTOMAÇÃO: substituir APENAS o valor da string abaixo (formato YYYY-MM-DD)
 // com a data de atualização dos dados do CROR (campo max "Criado" do xlsx).
 // NÃO usar new Date() sem argumento — isso pega a data de hoje, não do CROR.
-const _CROR_DATA_REF = "2026-09-23"; // ← GAS: max campo Criado do CROR
-const _EXEC_DATA = "2026-09-23"; // ← GAS: data da última execução do script
+const _CROR_DATA_REF = "2026-10-16"; // ← GAS: max campo Criado do CROR
+const _EXEC_DATA = "2026-10-16"; // ← GAS: data da última execução do script
 // Deriva o objeto Date a partir da string — sem timezone issues:
 const dataReferencia = (function(s) {
   var p = s.split("-");
@@ -1122,7 +1121,7 @@ const _fim90ISO = window._fim90ISO;
 const _fim90    = window._fim90;
 const hoje           = dataReferencia;
 // PERCGERAL_START
-const percGeral = 27;
+const percGeral = 40;
 // PERCGERAL_END
 const prioLabel = { critica:"Critica", alta:"Alta", media:"Media" };
 const stdLabel  = { andamento:"Em andamento", futuro:"Futuro", resolvido:"Concluido" };
@@ -4171,10 +4170,10 @@ function drawTrendChart() {
   //   Realizado = % atual de cada fase * peso (horas) / total
   //   Planejado = progresso linear planejado por fase acumulado
   //   Projeção  = curva planejada reescalada a partir do ponto atual
-  var realData = [27, 27, 27, 27, 27, null, null, null, null, null, null];
+  var realData = [40, 40, 40, 40, 40, 40, null, null, null, null, null];
   // Linha planejada (cronograma original — estimativa)
   var planejado = [6.7, 13.3, 20, 33.3, 40, 53.3, 66.7, 80, 86.7, 93.3, 100];
-  var projecao = [null, null, null, null, 27, 39.2, 51.3, 63.5, 75.7, 87.8, 100];
+  var projecao = [null, null, null, null, null, 40, 52, 64, 76, 88, 100];
   var W = (canvas.parentElement && canvas.parentElement.clientWidth > 50) ? canvas.parentElement.clientWidth : (canvas.parentElement && canvas.parentElement.offsetWidth > 50 ? canvas.parentElement.offsetWidth : 1280);
   var H = 220;
   canvas.width  = W * DPR;
